@@ -1,0 +1,26 @@
+[
+  {
+    "local_name": "October_2025.pdf",
+    "url": "https://waterregister.vic.gov.au/images/documents/Goulburn-to-Murray-Post-Trade-Opening-Report-October-2025.pdf",
+    "sha256": "13796ef38b5ebdcd70ea032fc6d37943763e1a1f770407db459d7fe20c100083",
+    "retrieved": "2026-10-13"
+  },
+  {
+    "local_name": "December_2025.pdf",
+    "url": "https://waterregister.vic.gov.au/images/documents/Goulburn-to-Murray-Post-Trade-Opening-Report-December-2025.pdf",
+    "sha256": "20f08a5c9a96cbf7c93c6afd3b0a5317d52e6d1c32948af09077be17c21ce862",
+    "retrieved": "2026-10-13"
+  },
+  {
+    "local_name": "ACCC_October_2025.pdf",
+    "url": "https://waterregister.vic.gov.au/images/documents/ACCC_statement_randomisation_october_2025.pdf",
+    "sha256": "bd16c3520b3ce63419345ad6bc976a475c277c65185f94ac2f83e4d38b7fa64e",
+    "retrieved": "2026-10-13"
+  },
+  {
+    "local_name": "ACCC_December_2025.pdf",
+    "url": "https://waterregister.vic.gov.au/images/documents/ACCC_statement_randomisation_december_2025.pdf",
+    "sha256": "7b96a175748c23c564f9d2cdd0975b888a98ad6bdee48e57f283152e0d263222",
+    "retrieved": "2026-10-13"
+  }
+]

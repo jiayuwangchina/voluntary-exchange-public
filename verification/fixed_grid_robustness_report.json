@@ -1,0 +1,385 @@
+{
+  "status": "PASS",
+  "exact_checks": 281,
+  "delta": "1/500",
+  "reserve_per_account": "1/2000",
+  "original_ledger_box_upper_bound": "1/2500",
+  "original_ledger_box_lower_bound": 0,
+  "productive_schedule": [
+    {
+      "step": 1,
+      "supplier": 1,
+      "x": "1/500",
+      "y": "1/500",
+      "allocation": [
+        "1/500",
+        "1/500",
+        "0"
+      ],
+      "ledger": [
+        "0",
+        "3/2000",
+        "1/2000"
+      ],
+      "payment": "1/5000",
+      "demander_gain": "9/5000"
+    },
+    {
+      "step": 2,
+      "supplier": 2,
+      "x": "1/500",
+      "y": "1/500",
+      "allocation": [
+        "1/250",
+        "1/500",
+        "1/500"
+      ],
+      "ledger": [
+        "1/1000",
+        "1/2000",
+        "1/2000"
+      ],
+      "payment": "1/5000",
+      "demander_gain": "9/5000"
+    },
+    {
+      "step": 3,
+      "supplier": 1,
+      "x": "1/250",
+      "y": "1/250",
+      "allocation": [
+        "1/125",
+        "3/500",
+        "1/500"
+      ],
+      "ledger": [
+        "0",
+        "1/400",
+        "1/2000"
+      ],
+      "payment": "1/2500",
+      "demander_gain": "9/2500"
+    },
+    {
+      "step": 4,
+      "supplier": 2,
+      "x": "1/250",
+      "y": "1/250",
+      "allocation": [
+        "3/250",
+        "3/500",
+        "3/500"
+      ],
+      "ledger": [
+        "1/500",
+        "1/2000",
+        "1/2000"
+      ],
+      "payment": "1/2500",
+      "demander_gain": "9/2500"
+    },
+    {
+      "step": 5,
+      "supplier": 1,
+      "x": "1/125",
+      "y": "1/125",
+      "allocation": [
+        "1/50",
+        "7/500",
+        "3/500"
+      ],
+      "ledger": [
+        "0",
+        "9/2000",
+        "1/2000"
+      ],
+      "payment": "1/1250",
+      "demander_gain": "9/1250"
+    },
+    {
+      "step": 6,
+      "supplier": 2,
+      "x": "1/125",
+      "y": "1/125",
+      "allocation": [
+        "7/250",
+        "7/500",
+        "7/500"
+      ],
+      "ledger": [
+        "1/250",
+        "1/2000",
+        "1/2000"
+      ],
+      "payment": "1/1250",
+      "demander_gain": "9/1250"
+    },
+    {
+      "step": 7,
+      "supplier": 1,
+      "x": "2/125",
+      "y": "2/125",
+      "allocation": [
+        "11/250",
+        "3/100",
+        "7/500"
+      ],
+      "ledger": [
+        "0",
+        "17/2000",
+        "1/2000"
+      ],
+      "payment": "1/625",
+      "demander_gain": "9/625"
+    },
+    {
+      "step": 8,
+      "supplier": 2,
+      "x": "2/125",
+      "y": "2/125",
+      "allocation": [
+        "3/50",
+        "3/100",
+        "3/100"
+      ],
+      "ledger": [
+        "1/125",
+        "1/2000",
+        "1/2000"
+      ],
+      "payment": "1/625",
+      "demander_gain": "9/625"
+    },
+    {
+      "step": 9,
+      "supplier": 1,
+      "x": "4/125",
+      "y": "4/125",
+      "allocation": [
+        "23/250",
+        "31/500",
+        "3/100"
+      ],
+      "ledger": [
+        "0",
+        "33/2000",
+        "1/2000"
+      ],
+      "payment": "2/625",
+      "demander_gain": "18/625"
+    },
+    {
+      "step": 10,
+      "supplier": 2,
+      "x": "4/125",
+      "y": "4/125",
+      "allocation": [
+        "31/250",
+        "31/500",
+        "31/500"
+      ],
+      "ledger": [
+        "2/125",
+        "1/2000",
+        "1/2000"
+      ],
+      "payment": "2/625",
+      "demander_gain": "18/625"
+    },
+    {
+      "step": 11,
+      "supplier": 1,
+      "x": "8/125",
+      "y": "8/125",
+      "allocation": [
+        "47/250",
+        "63/500",
+        "31/500"
+      ],
+      "ledger": [
+        "0",
+        "13/400",
+        "1/2000"
+      ],
+      "payment": "4/625",
+      "demander_gain": "36/625"
+    },
+    {
+      "step": 12,
+      "supplier": 2,
+      "x": "8/125",
+      "y": "8/125",
+      "allocation": [
+        "63/250",
+        "63/500",
+        "63/500"
+      ],
+      "ledger": [
+        "4/125",
+        "1/2000",
+        "1/2000"
+      ],
+      "payment": "4/625",
+      "demander_gain": "36/625"
+    },
+    {
+      "step": 13,
+      "supplier": 1,
+      "x": "16/125",
+      "y": "16/125",
+      "allocation": [
+        "19/50",
+        "127/500",
+        "63/500"
+      ],
+      "ledger": [
+        "0",
+        "129/2000",
+        "1/2000"
+      ],
+      "payment": "8/625",
+      "demander_gain": "72/625"
+    },
+    {
+      "step": 14,
+      "supplier": 2,
+      "x": "16/125",
+      "y": "16/125",
+      "allocation": [
+        "127/250",
+        "127/500",
+        "127/500"
+      ],
+      "ledger": [
+        "8/125",
+        "1/2000",
+        "1/2000"
+      ],
+      "payment": "8/625",
+      "demander_gain": "72/625"
+    },
+    {
+      "step": 15,
+      "supplier": 1,
+      "x": "14/125",
+      "y": "14/125",
+      "allocation": [
+        "31/50",
+        "183/500",
+        "127/500"
+      ],
+      "ledger": [
+        "9/250",
+        "113/2000",
+        "1/2000"
+      ],
+      "payment": "7/625",
+      "demander_gain": "63/625"
+    },
+    {
+      "step": 16,
+      "supplier": 2,
+      "x": "14/125",
+      "y": "14/125",
+      "allocation": [
+        "183/250",
+        "183/500",
+        "183/500"
+      ],
+      "ledger": [
+        "23/250",
+        "1/2000",
+        "1/2000"
+      ],
+      "payment": "7/625",
+      "demander_gain": "63/625"
+    },
+    {
+      "step": 17,
+      "supplier": 2,
+      "x": "67/250",
+      "y": "89/500",
+      "allocation": [
+        "1",
+        "183/500",
+        "68/125"
+      ],
+      "ledger": [
+        "1/1000",
+        "3/2000",
+        "181/2000"
+      ],
+      "payment": "89/5000",
+      "demander_gain": "1251/5000"
+    }
+  ],
+  "terminal_residual": [
+    "1/2000",
+    "1/1000",
+    "9/100"
+  ],
+  "exhaustive_grid_planner_audits": [
+    {
+      "h": "0",
+      "s": "0",
+      "value": "9/10",
+      "maximizers": [
+        [
+          "1",
+          "1/2",
+          "1/2"
+        ]
+      ],
+      "feasible_supplier_pairs": 251,
+      "supplier_pairs_examined": 251001
+    },
+    {
+      "h": "0",
+      "s": "1/2500",
+      "value": "9/10",
+      "maximizers": [
+        [
+          "1",
+          "1/2",
+          "1/2"
+        ]
+      ],
+      "feasible_supplier_pairs": 251,
+      "supplier_pairs_examined": 251001
+    },
+    {
+      "h": "1/4",
+      "s": "0",
+      "value": "909/1000",
+      "maximizers": [
+        [
+          "1",
+          "183/500",
+          "68/125"
+        ]
+      ],
+      "feasible_supplier_pairs": 32199,
+      "supplier_pairs_examined": 251001
+    },
+    {
+      "h": "1/4",
+      "s": "1/2500",
+      "value": "909/1000",
+      "maximizers": [
+        [
+          "1",
+          "183/500",
+          "68/125"
+        ]
+      ],
+      "feasible_supplier_pairs": 32199,
+      "supplier_pairs_examined": 251001
+    }
+  ],
+  "conserving_joint_exact": "8899/10000",
+  "conserving_sequential_upper_bound": "44399/50000",
+  "productive_joint_exact": "8989/10000",
+  "productive_sequential_lower_bound": "9013/10000",
+  "sequential_global_optima": "Not computed or claimed",
+  "note": "Analytic inequalities in the appendix cover the entire continuous slack box; corner checks complement that proof."
+}

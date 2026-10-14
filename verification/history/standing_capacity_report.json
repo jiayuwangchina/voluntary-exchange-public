@@ -1,0 +1,41 @@
+{
+  "label_passes": 3,
+  "documents": {
+    "Paper_1_Main_Manuscript": {
+      "pages": 42,
+      "own_labels": 48,
+      "unresolved_labels": [],
+      "review_log_lines": []
+    },
+    "Paper_1_Online_Appendix": {
+      "pages": 55,
+      "own_labels": 46,
+      "unresolved_labels": [],
+      "review_log_lines": []
+    },
+    "Response_to_Editorial_Review": {
+      "pages": 4,
+      "review_log_lines": []
+    },
+    "Econometrica_Cover_Letter": {
+      "pages": 1,
+      "review_log_lines": []
+    }
+  },
+  "abstract_words": 99,
+  "new_exact_planner_witnesses": 76,
+  "new_exact_conserving_frontier_witnesses": 165,
+  "independent_all_word_LP_comparisons": 36,
+  "existing_exact_result_checks": 227,
+  "existing_fixed_grid_checks": 281,
+  "cutoff_comparisons": "Analytically proved for all integers; exact-fraction finite audit also passed.",
+  "fixed_positive_stock": "1/2500",
+  "conserving_joint": "44499/50000",
+  "conserving_sequential_exact": "221203/250000",
+  "productive_joint": "494473/550000",
+  "productive_sequential_lower": "249739/275000",
+  "productive_approvals": 10,
+  "productive_rented_reserve": 0,
+  "visual_QA": "All manuscript and appendix pages reviewed in contact sheets; key theorem, proof, numerical table, response, cover, and final bibliography pages inspected at reading resolution.",
+  "verification_scope": "Theoretical checks retained from the preceding revision; current document compilation statistics updated after the empirical addition."
+}

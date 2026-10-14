@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "csv_name": "water_randomized_applications_391.csv",
+  "csv_sha256": "c0a47252a2b975b39f93895b8b0192e7633f75a67cd94ebd4a5b3078a8feeead",
+  "rows_compared": 391,
+  "numeric_method": "Decimal: exact equality, no tolerance or rounding",
+  "events": {
+    "2025-10-15": {
+      "source_url": "https://waterregister.vic.gov.au/images/documents/Goulburn-to-Murray-Post-Trade-Opening-Report-October-2025.pdf",
+      "input_name": "October_2025.pdf",
+      "input_type": "official_pdf",
+      "sha256": "13796ef38b5ebdcd70ea032fc6d37943763e1a1f770407db459d7fe20c100083",
+      "extraction": "pdftotext -layout",
+      "rows_extracted": 203,
+      "priorities_complete": true,
+      "field_comparisons": 1827,
+      "total_volume_ML": "70222.0",
+      "successful_applications": 98,
+      "successful_volume_ML": "31209.8"
+    },
+    "2025-12-15": {
+      "source_url": "https://waterregister.vic.gov.au/images/documents/Goulburn-to-Murray-Post-Trade-Opening-Report-December-2025.pdf",
+      "input_name": "December_2025.pdf",
+      "input_type": "official_pdf",
+      "sha256": "20f08a5c9a96cbf7c93c6afd3b0a5317d52e6d1c32948af09077be17c21ce862",
+      "extraction": "pdftotext -layout",
+      "rows_extracted": 188,
+      "priorities_complete": true,
+      "field_comparisons": 1316,
+      "total_volume_ML": "68123.1",
+      "successful_applications": 117,
+      "successful_volume_ML": "37639.9"
+    }
+  },
+  "mismatches": []
+}

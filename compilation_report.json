@@ -1,0 +1,25 @@
+{
+  "passes": 3,
+  "documents": {
+    "Paper_1_Main_Manuscript": {
+      "pages": 34,
+      "labels": 48,
+      "external_refs": 36,
+      "warnings": [],
+      "source_sha256": "c0b54a852983b3904a9a7c436aa2dc51e53573a75bbdece6279600419f61e9a1",
+      "pdf": "Anonymous_Main_Manuscript.pdf"
+    },
+    "Paper_1_Online_Appendix": {
+      "pages": 45,
+      "labels": 46,
+      "external_refs": 37,
+      "warnings": [],
+      "source_sha256": "71c777ef7aa2ab8228099da145d67c92b23be41d6803603154debc96aa05fb27",
+      "pdf": "Anonymous_Online_Appendix.pdf"
+    }
+  },
+  "class_mode": "official econsocart draft",
+  "external_references": "plain text, refreshed by build.py",
+  "author_information": "omitted by request",
+  "abstract_words": 99
+}

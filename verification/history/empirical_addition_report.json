@@ -1,0 +1,38 @@
+{
+  "label_passes": 3,
+  "documents": {
+    "Paper_1_Main_Manuscript": {
+      "pages": 42,
+      "own_labels": 48,
+      "unresolved_labels": [],
+      "review_log_lines": []
+    },
+    "Paper_1_Online_Appendix": {
+      "pages": 55,
+      "own_labels": 46,
+      "unresolved_labels": [],
+      "review_log_lines": []
+    },
+    "Response_to_Editorial_Review": {
+      "pages": 4,
+      "review_log_lines": []
+    },
+    "Econometrica_Cover_Letter": {
+      "pages": 1,
+      "review_log_lines": []
+    }
+  },
+  "abstract_words": 99,
+  "empirical_source_rows_compared": 391,
+  "empirical_source_field_comparisons": 3143,
+  "empirical_source_mismatches": 0,
+  "ledger_replay_exact_rows": 391,
+  "october_successful_counts": [
+    98,
+    106,
+    159
+  ],
+  "monte_carlo_permutations": 100000,
+  "empirical_scope": "Fixed submitted requests and capacity; successful application counts, conditional on other account requirements.",
+  "visual_QA": "Changed main and appendix pages, references, response, and cover reviewed; no clipping or overlap."
+}

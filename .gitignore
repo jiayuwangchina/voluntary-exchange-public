@@ -1,0 +1,21 @@
+# Local TeX intermediates; the two compiled PDFs are intentionally versioned.
+Paper_1_Main_Manuscript.pdf
+Paper_1_Online_Appendix.pdf
+*.aux
+*.out
+*.log
+*.brf
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+compile-*.txt
+texput.*
+__pycache__/
+*.py[cod]
+.venv/
+.DS_Store
+Thumbs.db
+replication-output/

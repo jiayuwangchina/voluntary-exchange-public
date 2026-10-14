@@ -1,0 +1,22 @@
+{
+  "Paper_1_Main_Manuscript.tex": {
+    "unchanged_theorem_and_proof_environments": 27,
+    "prospective_remnants": 0
+  },
+  "Paper_1_Online_Appendix.tex": {
+    "unchanged_theorem_and_proof_environments": 34,
+    "prospective_remnants": 0
+  },
+  "data/water_randomized_applications_391.csv": {
+    "unchanged": true,
+    "sha256": "c0a47252a2b975b39f93895b8b0192e7633f75a67cd94ebd4a5b3078a8feeead"
+  },
+  "empirical/queue_replication_results.json": {
+    "unchanged": true,
+    "sha256": "55a02e0a8d6078b86a5764a779a518c2d5ad0ec820b9ac397295d79e880039c7"
+  },
+  "verification/standing_capacity_report.json": {
+    "unchanged": true,
+    "sha256": "f2889c66ae5db386aaf8103a85aebf89ac231eab471bcb792f9e51d69d074a59"
+  }
+}

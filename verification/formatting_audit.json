@@ -1,0 +1,19 @@
+{
+  "scope": "Formatting and anonymous GitHub release; no new scientific result claimed",
+  "documents": {
+    "Paper_1_Main_Manuscript": {
+      "scientific_body_preserved": true,
+      "theorem_and_proof_environments_preserved": 27,
+      "bibliography_preserved": true,
+      "canonical_scientific_sha256": "5a5ff4d249ed848188267f8c888c775abd3580ce74b70ca73451c7b26e17a036"
+    },
+    "Paper_1_Online_Appendix": {
+      "scientific_body_preserved": true,
+      "theorem_and_proof_environments_preserved": 34,
+      "bibliography_preserved": true,
+      "canonical_scientific_sha256": "0ef5c505dd400b2d792ecc5e39d180142c24c43b6bd6ef0f8beefd0a05215f8e"
+    }
+  },
+  "official_style_files_unmodified": true,
+  "data_preserved": true
+}

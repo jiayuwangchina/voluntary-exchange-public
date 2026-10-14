@@ -1,0 +1,1710 @@
+% Anonymous edition. Compile both documents with python3 build.py.
+% Official econsocart class/configuration are redistributed without modification.
+\documentclass[ecta,draft]{econsocart}
+\ifdefined\pdfminorversion\pdfminorversion=7\fi
+\usepackage[utf8]{inputenc}
+\usepackage{microtype,mathtools,booktabs,array,enumitem,needspace,longtable,tabularx}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+\usepackage{xurl,bookmark}
+% Portable mappings for font shapes used by the official public class.
+\DeclareFontShape{T1}{ptm}{m}{uc}{<->ssub*ptm/m/n}{}
+\DeclareFontShape{T1}{ptm}{m}{up}{<->ssub*ptm/m/n}{}
+\DeclareFontShape{T1}{ptm}{m}{scit}{<->ssub*ptm/m/sc}{}
+\hypersetup{pdftitle={The Cost of Voluntary Exchange: Allocation and Settlement under Separate Public Accounts},pdfauthor={},pdfsubject={Anonymous manuscript},pdfkeywords={voluntary exchange; separate public accounts; settlement; reserves}}
+\setlength{\emergencystretch}{2em}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\setlist{itemsep=3pt,topsep=5pt}
+\setcounter{secnumdepth}{2}
+% Neutral masthead for an anonymous working manuscript. No submission is asserted.
+\makeatletter
+\def\copyright@text{Anonymous Manuscript}
+\makeatother
+\startlocaldefs
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newcommand{\R}{\mathbb R}
+\newcommand{\FS}{\mathcal F^{S}}
+\newcommand{\FP}{\mathcal F^{P}}
+\newcommand{\FB}{\mathcal F^{B}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\endlocaldefs
+\begin{document}
+\begin{frontmatter}
+\title{The Cost of Voluntary Exchange:\\
+Allocation and Settlement under Separate Public Accounts}
+\runtitle{The Cost of Voluntary Exchange}
+\begin{abstract}
+An informed authority chooses allocations and voluntary settlement schedules
+under separate public accounts. We characterize implementation losses as
+functions of standing capacity, temporary reserves, and approval costs.
+Conserving technologies recycle capacity; executable productive releases expand
+it. With empty accounts, optimized losses have square-root order under
+conservation and linear order with a logarithmic factor under productivity.
+Positive standing capacity changes these limiting rates while preserving a
+quantitative gap in approval requirements. This gap determines when productive
+releases reverse the choice between joint and sequential settlement. The model
+retains complete information, divisible irreversible adjustments, balanced
+compensation, and unvalued residual public balances.
+\end{abstract}
+\begin{keyword}
+\kwd{Voluntary exchange}
+\kwd{public accounts}
+\kwd{bilateral clearing}
+\kwd{reserves}
+\kwd{settlement costs}
+\end{keyword}
+\end{frontmatter}
+\noindent\textsc{JEL classifications:} D47, D61, H41, H55, J26.
+
+\section{Introduction}
+
+An informed public authority chooses an allocation and a voluntary settlement
+schedule under separate public accounts. A transaction can consume capacity
+before another transaction releases it. This execution constraint changes
+the authority's choice between sequential approvals and joint settlement,
+even when each institution chooses its own allocation. Conserving transactions
+reuse a bounded stock; executable productive releases expand the capacity
+available for later approvals. We derive sharp implementation-loss bounds
+and identify when this difference reverses the preferred institution.
+Balanced compensation secures consent within every approval, while account
+feasibility governs its execution. The resulting comparison determines how
+standing capacity substitutes for temporary reserves and joint commitment.
+
+The analysis begins with the fully informed planner and its implementation
+through unrestricted voluntary trade. We then impose separate-account
+feasibility after every bilateral approval. With empty accounts, conserving
+technologies incur optimized losses of order $\sqrt{\rho\tau}$, whereas
+executable productive releases yield order $\tau\log(\rho/\tau)$, where
+$\rho$ prices temporary reserves and $\tau$ prices approvals. Positive
+standing balances change both limiting rates to linear order in $\tau$ when
+those balances are fixed. The economically relevant difference then lies in
+the dependence on standing capacity: inverse under conservation and
+logarithmic under productivity. A uniform comparison identifies a range in
+which existing balances sustain productive implementation at the minimum-loss
+order without rented reserves, while conserving implementation benefits from
+additional reserves. The associated welfare gap determines when productive
+releases change the preferred settlement institution. Throughout, the informed
+authority selects allocations and schedules; adjustments are divisible and
+irreversible, and compensation is enforceable and balanced. The model contains
+no decentralized bargaining.
+
+\paragraph{Contribution hierarchy.}
+The principal result links the resource technology to optimized implementation
+losses, jointly accounting for standing capacity, rented reserves, and approval
+costs. Theorem~\ref{thm:standingcapacity} establishes the comparison with
+positive initial balances; Theorem~\ref{thm:optimizedloss} gives its
+empty-account benchmark. The exact reserve--approval frontier identifies the
+mechanism, and the general execution conditions extend it beyond the numerical
+family. These bounds have two institutional implications. They identify when
+existing capacity is sufficient to implement the planner allocation at the optimal loss order
+without rented reserves, and when the cost of joint commitment changes the
+preferred settlement rule. A common-fee interval establishes the latter
+comparison after both institutions choose their allocations.
+Corollary~\ref{cor:standingcutoffs} also solves the institutional decision
+at the original fixed prices: a strictly positive standing-capacity interval
+supports the reversal, and a higher capacity cutoff makes sequential
+settlement preferable under both technologies. Table~\ref{tab:contributions} organizes the results around this argument.
+
+\begin{table}[!htbp]
+\centering
+\caption{Contribution hierarchy}
+\label{tab:contributions}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.26\linewidth}@{}}
+\toprule
+Role & Economic content & Results\\
+\midrule
+Central result & Standing capacity and productive releases determine optimized implementation losses and the value of temporary reserves. & Theorems~\ref{thm:standingcapacity} and~\ref{thm:optimizedloss}\\[3pt]
+Exact mechanism & Conservation and productive releases generate inverse and logarithmic approval requirements. & Propositions~\ref{prop:exactproductive} and~\ref{prop:standingexact}; Theorem~\ref{thm:generalproductive}\\[3pt]
+Institutional implication & Commitment thresholds identify an endogenous-allocation reversal at common prices. & Corollaries~\ref{cor:standingreversal} and~\ref{cor:standingcutoffs}; Theorem~\ref{thm:endogenousreversal}\\[3pt]
+Economic margins & Allocation-dependent fees, distorted quantities, binding participation, and discrete decisions. & Propositions~A.5%<xref:prop:allocationfees>
+ and~A.6%<xref:prop:allocationdistortion>
+; Corollary~\ref{cor:gridrobustreversal}\\[3pt]
+Foundation & Balanced implementation and exact recovery with a repayable reserve. & Section~\ref{sec:trade}; Theorem~A.2%<xref:thm:temporaryreserve>
+\\[3pt]
+Application & Priority changes the number and identity of water trade requests served by a fixed capacity. & Section~\ref{sec:waterapplication}; Appendix~M%<xref:app:waterbenchmark>
+\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{The approval frontier and its boundary.}
+A blocked start and a strictly positive nonexpanding weighted stock imply
+inverse-reserve approval requirements. An executable productive sequence
+supports geometric expansion and logarithmic requirements when its releases
+also permit completion at the planner allocation. We state both sets of
+conditions directly and provide a finite family of linear programs that
+constructs the productive sequence from the resource matrix, preferences,
+caps, and planner value. Section~\ref{sec:standingcapacity} extends the
+comparison uniformly to positive standing balances. The resulting bounds
+separate three policy margins: using standing capacity, authorizing
+temporary reserves, and paying for joint commitment. The exact constants
+and parity terms in the three-account family sharpen this general comparison.
+
+\paragraph{Mandate and extensions.}
+The core sets $B\equiv0$: employee surplus is maximized subject to separate
+public protections, with residual balances carrying no additional welfare
+value. Implementation costs are financed from separately authorized operating
+resources and deducted from aggregate surplus. A curved-benefit example shows
+how sequential costs reduce the selected quantity; a participation example
+shows how employee consent raises the reserve required by a feasible physical
+schedule. The institutional reversal also holds over a stated interval of
+allocation-dependent fees and for a fixed adjustment grid with positive
+initial balances. Appendix~K%<xref:app:valuedbalances>
+ studies valued public
+balances and the associated financing conditions.
+Appendix~L%<xref:app:indivisibility>
+ derives discrete reserve floors and
+convergence to the divisible frontier.
+
+\paragraph{Administrative application.}
+Section~\ref{sec:waterapplication} examines a published water trade queue
+with positive initial capacity. The same 203 submitted requests produce 98
+successful applications under recorded random priority, 106 under arrival
+order, and a maximum of 159 under smallest volume first. Executed water
+volume changes by less than $0.1\%$. The application isolates the allocation
+consequences of priority conditional on the submitted requests and other
+account requirements. The exact count benchmark and administrative replay
+give an observable institutional example of why high aggregate capacity use
+can coexist with substantial differences in access across applications.
+
+\paragraph{Relation to existing work.}
+The bilateral-exchange literature characterizes the relationship between
+pairwise improvements and efficiency
+\citep{Feldman1973,Madden1978,GoldmanStarr1982,Fisher1989}.
+We study the execution cost of voluntary improvements when separate public
+accounts constrain every intermediate allocation. Continuous-net theory
+provides finite-reachability characterizations and divided-execution
+constructions \citep{JulvezRecaldeSilva2003,FracaHaddad2015}.
+Our economic comparison optimizes the allocation and its voluntary
+implementation together. Preferences and balanced compensation determine
+admissible atomic approvals; account protections determine their executable
+order. The reserve frontier prices this interaction and yields thresholds
+for institutional choice, including with positive standing capacity.
+Decomposing an atomic approval into separate activity moves can change
+consent, resource requirements, and implementation cost.
+
+Settlement economics establishes that the organization of execution affects
+resource use and welfare. \citet{KahnRoberds2001} derive the cost of gross
+settlement from credit constraints and analyze the role of intraday credit
+and collateral. \citet{KahnMcAndrewsRoberds2003} connect the underlying trading
+economy to gridlock, collateral requirements, and settlement delay.
+\citet{MartinMcAndrews2008} study how queue design changes incentives and
+welfare, while \citet{AtalayMartinMcAndrews2010} compare settlement outcomes
+with the planner's allocation. Related work studies settlement institutions
+in trading economies \citep{KoepplMonnetTemzelides2008}.
+Our mechanism concerns how voluntary execution replenishes the particular
+public capacities needed for subsequent approvals. Its economic consequence
+is a change in optimized implementation losses and in the authority's
+willingness to pay for joint authorization. The conserving cost balance
+follows the inventory logic of \citet{Baumol1952}; productive releases change
+the rate at which additional capacity reduces the approval burden.
+The authority chooses the allocation and schedule under complete information.
+Private-information and computational-complexity questions are developed
+separately.
+
+\section{The planner and unrestricted trade}
+\label{sec:planner}
+
+\subsection{Preferences, accounts, and the settlement mandate}
+
+There are finite sets of demanders $D$ and suppliers $S$. Demander $i$ chooses
+$a_i\in[0,\bar a_i]$ and receives benefit $U_i(a_i)$; supplier $j$ chooses
+$b_j\in[0,\bar b_j]$ and incurs cost $C_j(b_j)$. Roles are fixed and publicly
+verified. Let $z=(a,b)$ and let $X$ be the product of these intervals, with
+positive finite caps. The baseline is $z=0$. Benefits and costs are continuously
+differentiable on neighborhoods of their intervals, benefits are concave,
+and costs are convex and nondecreasing. Normalize
+$U_i(0)=C_j(0)=0$. The frontier and cost results specialize to positive linear
+values and costs, $U_i(a_i)=v_i a_i$ and $C_j(b_j)=c_jb_j$.
+
+There are $K$ public resource accounts. Their initial capacities are
+$R\geq0$, and $M$ is the verified linear resource-effect matrix. A positive
+entry of $Mz$ releases capacity; a negative entry consumes it. The feasible set is
+\begin{equation}
+ \FS(R)=\{z\in X:R+Mz\geq0\}.
+ \label{eq:feasible}
+\end{equation}
+Inequalities between vectors are coordinatewise. Rows can distinguish dates,
+grades, or organizational units whose authorizations cannot be combined. For
+one demander, the retirement interpretation has pension, payroll, and position
+accounts:
+\begin{equation}
+R+Mz=\begin{pmatrix}
+ R^P-\kappa_da+\sum_j\kappa_jb_j\\
+ R^W+\omega_da-\sum_j\omega_jb_j\\
+ R^H+a-\sum_jb_j
+\end{pmatrix},
+\qquad \kappa_d,\omega_d,\kappa_j,\omega_j>0.
+\label{eq:threeaccounts}
+\end{equation}
+The pension row is a specified ceiling on incremental pension exposure, not an
+agency-held retirement fund. Payroll effects must be recognized within the
+relevant authorization, and position units represent compatible service time.
+The institutional technology grants authority to certify and reuse these releases.
+
+Compensation $t_h$ is money received by employee $h$. Employee utilities are
+$U_i(a_i)+t_i$ and $-C_j(b_j)+t_j$. Compensation is exactly balanced when
+$\sum_h t_h=0$; these transfers do not enter $M$. They do not amend an
+appropriation or create a position. Define employee surplus by
+\begin{equation}
+ W(z)=\sum_{i\in D}U_i(a_i)-\sum_{j\in S}C_j(b_j)
+     =\sum_h f_h(z_h).
+ \label{eq:welfare}
+\end{equation}
+
+\begin{center}
+\fbox{\begin{minipage}{0.92\linewidth}
+\textbf{Settlement mandate.} The core sets $B\equiv0$: the authority maximizes
+employee surplus subject to every separate public-account constraint, with no
+additional welfare weight on residual balances and no net public payment to
+employees. Information is complete, adjustments are divisible and irreversible,
+and compensation is enforceable and balanced. Every account remains nonnegative
+after each approval. Temporary reserves must be returned; original balances may
+be consumed. Implementation expenditures come from separately authorized
+operating resources.
+\end{minipage}}
+\end{center}
+
+The fully informed benchmark under this mandate is
+\begin{equation}
+ V^S(R)=\max_{z\in\FS(R)}W(z).
+ \tag{SP}\label{eq:SP}
+\end{equation}
+Compactness and continuity give an optimum; the baseline makes its value
+nonnegative. This mandate fixes public protections as constraints. A broader
+appraisal that values residual capacity is developed in
+Appendix~K%<xref:app:valuedbalances>
+.
+
+\subsection{The endogenous planner allocation in the productive family}
+\label{sec:solvedplanner}
+\label{sec:localrobustness}
+
+The central family has one demander, two suppliers, unit caps, zero initial
+balances, $v=1$, $c_1=c_2=1/10$, and
+\[
+ M_h=\begin{pmatrix}
+ -2&3/2+h&5/2\\
+ 1&-1/2&-3/2\\
+ 1&-1&-1
+ \end{pmatrix},\qquad 0\leq h<1/2.
+\]
+Only supplier 1's pension release changes with $h$. Preferences, caps, the
+other resource effects, and bilateral permissions stay fixed.
+
+\begin{proposition}[The endogenous planner optimum]
+\label{prop:productiveplanner}
+For each demander quantity $a\in[0,1]$, the minimum supplier cost under the
+separate-account constraints is
+\[
+ C_h^S(a)=\frac{1+h}{5(2+3h)}a,
+ \qquad
+ (b_1,b_2)=\left(\frac{a}{2+3h},
+                     \frac{(1+2h)a}{2+3h}\right).
+\]
+The planner optimum and value are therefore
+\[
+ z_h^*=\left(1,\frac1{2+3h},\frac{1+2h}{2+3h}\right),
+ \qquad V_h^*=1-\frac{1+h}{5(2+3h)}.
+\]
+The optimum is unique, and its residual balances are
+$M_hz_h^*=(0,0,h/(2+3h))^{\mathsf T}$.
+\end{proposition}
+
+\begin{proof}
+At a fixed $a$, pension and payroll feasibility imply
+\[
+ (3/2+h)b_1+(5/2)b_2\geq2a,
+ \qquad -(1/2)b_1-(3/2)b_2\geq-a.
+\]
+Multiplying these inequalities by $2/(2+3h)$ and
+$2(1-h)/(2+3h)$, respectively, and adding gives
+\[
+ b_1+b_2\geq\frac{2(1+h)}{2+3h}a.
+\]
+The stated bundle attains this bound and leaves position capacity
+$ha/(2+3h)\geq0$. Its quantities respect the unit caps. Both multipliers
+are positive, so equality requires both fiscal constraints to bind; their
+independent equations give the unique cost-minimizing bundle. Employee surplus
+at this bundle is $a[1-(1+h)/(5(2+3h))]$, whose coefficient is positive.
+Hence the unique optimum has $a=1$.
+\end{proof}
+
+At $h=1/4$, the optimum is $(1,4/11,6/11)$ and its value is $10/11$.
+The proportional target $(1,1/2,1/2)$ has value $9/10$ and leaves pension
+capacity $1/8$. It is feasible but not planner-optimal: it uses more supplier
+activity to obtain the same demander benefit. In general,
+\[
+ V_h^*-\frac9{10}=\frac{h}{10(2+3h)},
+\]
+which is strictly positive for $h>0$ and equals $1/110$ at $h=1/4$.
+
+\subsection{Unrestricted trade implements the benchmark}
+\label{sec:trade}
+
+An unrestricted agreement makes an entire feasible allocation and its
+compensation effective together. Each employee may retain the baseline, and
+there are no wealth constraints or transfer caps. At any allocation with
+$W(z)\geq0$, choose $\alpha_h\geq0$ summing to one and set
+$t_h=\alpha_hW(z)-f_h(z_h)$. Transfers balance and give each employee the
+nonnegative payoff $\alpha_hW(z)$. Thus unrestricted voluntary agreement
+implements a planner optimum.
+
+The allocation also has competitive support. At account prices $p\geq0$,
+employee $h$ chooses $z_h$ to maximize $f_h(z_h)+p^{\mathsf T}m_hz_h$,
+where $m_h$ is its column of $M$. Concavity and the polyhedral normal-cone
+condition at an optimum supply supporting prices with
+$p^{\mathsf T}(R+Mz^*)=0$. Fixed nonnegative rebates totaling
+$p^{\mathsf T}R$ make employee transfers exactly balanced. Each employee
+weakly prefers its choice to zero. Conversely, summing the maximizing
+inequalities establishes planner optimality. This standard welfare argument
+\citep{ArrowDebreu1954,BoydVandenberghe2004} is proved, including valued public
+balances, in Proposition~A.8%<xref:prop:publiccompetitive>
+ of
+Appendix~K%<xref:sec:implementation>
+.
+
+For $M_h$, prices
+\[
+ p_h=\left(\frac1{5(2+3h)},
+                 \frac{1-h}{5(2+3h)},0\right)
+\]
+pay each supplier $1/10$ per unit and charge the demander
+$(1+h)/[5(2+3h)]$ per unit. The demander chooses one; the cost-minimizing
+supplier quantities clear the accounts and satisfy supplier optimality.
+The corresponding transfers leave the demander $V_h^*$ and both suppliers
+zero. These prices support the planner allocation through jointly effective
+agreements under complete information.
+
+\section{Constrained settlement and the exact reserve frontier}
+\label{sec:recovery}\label{sec:institution}
+\label{sec:sequential}\label{sec:sharpseeds}\label{sec:seeddesign}
+
+A joint package takes effect when its aggregate allocation satisfies the ledger.
+A sequential approval changes at most one demander and one supplier activity;
+demander-only approvals are permitted. Activities only increase. Each approval
+must leave every account nonnegative and give each participating employee a
+nonnegative incremental gain under exactly balanced compensation. With linear
+preferences, increments $(x,y)$ for pair $(i,j)$ satisfy this participation
+condition precisely when $v_ix\geq c_jy$. Previously settled releases can be
+reused. An independently cleared pair cannot use another pair's release; the
+sequential institution studied here expressly permits such reuse.
+
+Let $V_T^{\mathrm{seq}}(R)$ denote the largest employee surplus attainable
+from $R$ in at most $T$ such approvals. This notation alone imposes no repayment
+condition. In every institutional comparison below, a reserve $\epsilon r$
+added to an original ledger $R^0$ must be returned, so the terminal allocation
+also satisfies $R^0+Mz\geq0$. Reserve authorization and return are not bilateral
+approvals. All costs below price this same convention.
+
+Two implementation facts motivate the frontier. First, no nonzero bilateral
+approval is feasible from zero in $M_h$: supplier 1 requires $x\geq y$ from
+positions but $x\leq(3/4+h/2)y<y$ from pensions; supplier 2 requires
+$x\geq3y/2$ from payroll but $x\leq5y/4$ from pensions. A demander-only move
+also consumes pension capacity. Second, a reserve positive in every account
+permits exact recovery of an original positive-surplus planner optimum under
+nondecreasing concave benefits, convex costs with positive derivatives, and
+complete bilateral access. Theorem~A.2%<xref:thm:temporaryreserve>
+ proves this
+claim by decomposing the optimum into employee-voluntary bundles and executing
+sufficiently small rounds. The reserve covers within-round shortfalls and is
+returned at completion. Its full statement and proof are in
+Appendix~A%<xref:app:designproofs>
+.
+
+For $\theta\in(0,1]$, define the proportional target
+$z_\theta=(\theta,\theta/2,\theta/2)$ and let
+$N_h(\theta,\epsilon)$ be its minimum number of voluntary approvals from
+$\epsilon(1,1,1)$. Its surplus is $9\theta/10$ and its net release is
+$(h\theta/2,0,0)$, so the reserve is repayable. This target provides an exactly
+solvable intermediate stage. Proposition~\ref{prop:productiveplanner} shows
+why it is not the planner optimum when $h>0$.
+
+\begin{proposition}[The exact reserve frontier with productive releases]
+\label{prop:exactproductive}
+In the economy $M_h$, fix $\theta\in(0,1]$ and an integer $T\geq2$.
+The least reserve per account that permits exact voluntary implementation
+of $z_\theta$ in at most $T$ bilateral approvals is
+\begin{equation}
+ \epsilon_T(h,\theta)=
+ \begin{cases}
+ \displaystyle\frac{h\theta}{6(G_T(h)-1)},&0<h<1/2,\\[6pt]
+ \displaystyle\frac{\theta}{12(T-1)},&h=0,
+ \end{cases}
+ \label{eq:exactproductiveseed}
+\end{equation}
+Here $\gamma_h=(1+2h)/(1-2h)$ and, for $n\geq1$,
+\[
+ G_{2n}(h)=\frac{1+\gamma_h}{2}\gamma_h^{\,n-1},
+ \qquad G_{2n+1}(h)=\gamma_h^{\,n}.
+\]
+An attaining schedule alternates suppliers, beginning with supplier 1.
+Every intermediate account balance is nonnegative, each transaction is
+voluntary under balanced compensation, and the reserve can be returned
+after the final approval. The formula for $h=0$ is also the continuous
+limit as $h\downarrow0$ for each fixed $T$ and $\theta$.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+A change of variables projects feasible balances into a two-dimensional
+conversion problem. In that relaxation, deleting moves without supplier
+activity and combining adjacent moves using the same supplier leaves an
+alternating word. Successive maximal conversions move between its boundary
+faces; the associated linear recurrence
+has multiplier $\gamma_h$ and the displayed parity term $G_T$. Bounding all
+alternating words by this recurrence gives necessity for physical schedules.
+Lifting the boundary construction back to activity increments attains the bound,
+has positive surplus at every approval,
+respects the activity caps, and returns the reserve. At $h=0$ the recurrence
+becomes additive. Appendix~B%<xref:app:localrobustness>
+ proves both bounds and
+verifies the attaining transfers and terminal balances.
+\end{proof}
+
+The frontier has inverse-reserve order at $h=0$ and logarithmic order at every
+fixed $h>0$. Conservation keeps the usable weighted
+stock proportional to the initial reserve. Productive rounds create capacity
+that later rounds reuse. Section~\ref{sec:generalproductive} gives conditions
+for this distinction beyond $M_h$ and for completion at an endogenous planner
+optimum.
+
+\section{Productive releases and optimized implementation losses}
+The authority authorizes reserve $\epsilon r$ at cost $\rho\epsilon$, with
+$\rho>0$, and pays $\tau>0$ for each approval. A joint package uses one
+approval and pays a fixed contingent-commitment cost $F$. Unless otherwise
+specified, $F$ is the same for every nonzero joint package, and both institutions
+have common verification cost $\mathcal K=0$. The zero allocation costs nothing. Costs
+are paid from preauthorized operating resources and deducted from aggregate
+surplus; employee compensation remains balanced within each approval. If these
+costs consume a constrained account, that consumption must instead be included
+in the ledger. No exogenous reserve cap is imposed here.
+
+\paragraph{Authorization capacity and the institutional comparison.}
+An account balance authorizes specified adjustments within one planning
+episode. A reserve temporarily enlarges that authorization and is returned
+at the terminal allocation. Its price $\rho\epsilon$ measures the opportunity
+or administrative cost of making the reserve vector available. The retirement
+application interprets these balances as permissions to recognize and reuse
+pension, payroll, and position releases. The reserve composition $r$ is fixed.
+
+We model two authorization technologies. Under routine approval, a bilateral
+order becomes effective when issued, compensation is enforceable, and each
+account officer checks the resulting ledger against the capacity then
+available. The authority can plan the entire sequence in advance. A planned
+future release becomes usable when the order producing it takes effect.
+Under joint authorization, the officers certify a common program whose
+debits and releases become effective together. The program requires a
+contingent authorization from each protected account and a common
+effectiveness instruction. Let $f_k\geq0$ be the resource cost of preparing
+that contingent authorization for account $k$, and let $f_0\geq0$ be the cost
+of activating the common instruction. With fixed administrative coverage,
+the additional program cost is
+\[
+ F=f_0+\sum_{k\in\mathcal A}f_k,
+\]
+where $\mathcal A$ is the fixed set of protected accounts.
+The ordinary approval cost $\tau$ covers the final authorization under either
+technology. The costs $f_k$ purchase conditional effectiveness across orders;
+the compensation contracts within each approved order are enforceable under
+both technologies. This administrative technology therefore separates the
+ability to plan a program from the authority to make its component orders
+jointly effective. Complete information removes uncertainty about gains and
+resource effects; it leaves these authorization requirements in place.
+In financial settlement, linking the completion of
+obligations is likewise an explicit design requirement
+\citep[Principle~12]{CPSSIOSCO2012}.
+
+The cost $F$ is an avoidable resource cost of the program under consideration.
+When the required joint facility is already available at zero incremental
+cost, the relevant value is $F=0$. When administrative coverage depends on
+the chosen program, the same construction yields $F(z)$, as studied in
+Proposition~A.5%<xref:prop:allocationfees>
+. These costs are evaluated at common
+administrative prices across the technologies being compared. With a common
+fixed charge, a schedule containing joint approvals is weakly dominated by
+one joint package implementing its terminal allocation: balanced compensation
+supports that endpoint with one approval and no rented reserve. The two
+settlement rules thus exhaust the useful schedules within this authorization
+technology. Variable charges permit additional batching choices when those
+choices are included in the institutional menu.
+
+\subsection{Executable productive releases and the boundary}
+\label{sec:generalproductive}
+
+The geometric construction has a sufficient condition that does not
+depend on the coefficients of $M_h$. We state it for a finite linear
+economy with zero initial balances, positive values and costs, finite
+action caps, and reserve $\epsilon r$, where $r\gg0$. Retain complete
+information, irreversible divisible adjustments, balanced compensation,
+and the $B\equiv0$ mandate. Every demander--supplier pair and
+demander-only move is permitted. A voluntary bundle has at most one demander
+and one supplier coordinate, or a demander coordinate alone; a pair
+$(x,y)$ satisfies $v_i x\geq c_jy$. Assume a blocked start: no nonzero
+voluntary bundle is feasible from zero. These assumptions define the quantitative class; the recovery theorem in
+the appendix also covers concave benefits and convex costs. Let $\mathcal D$ be
+the union of these voluntary directions normalized to have coordinate sum one,
+and put $\bar v=\max_i v_i$.
+
+\begin{definition}[An executable productive release]
+\label{def:executableproductive}
+A feasible positive-surplus target $z^*$ admits an executable productive
+release if there are $\alpha,\kappa>0$, nonzero voluntary bundles
+$u^1,\ldots,u^k$, and a possibly empty finite list of nonzero voluntary
+bundles $v^1,\ldots,v^\ell$, such that, writing
+\[
+ d=\sum_{j=1}^k u^j,\qquad p=Md,\qquad
+ c=\sum_{j=1}^\ell v^j,
+\]
+one has
+\[
+ p\geq0,\quad p\ne0,\quad z^*=\alpha d+c,
+ \qquad
+ M\sum_{j=1}^s u^j\geq-\kappa p
+ \quad(0\leq s\leq k),
+\]
+and
+\[
+ \alpha p+M\sum_{j=1}^s v^j\geq0
+ \quad(0\leq s\leq\ell).
+\]
+All inequalities between resource vectors are coordinatewise.
+\end{definition}
+
+The vector $p$ is the net capacity released by one productive bundle.
+The prefix inequalities require that this same capacity can finance the
+bundle's temporary shortfalls. The final list then completes the target
+using the accumulated release. The prefix and completion inequalities distinguish an executable gain
+from a net release that cannot finance its own implementation. No
+positivity is required in every coordinate of $p$; resources with
+$p_i=0$ must be generated before use within the specified bundle.
+Since all activities are nonnegative and the completed target respects
+the caps, every partial implementation also respects them.
+
+\begin{theorem}[A general logarithmic frontier and its boundary]
+\label{thm:generalproductive}
+Suppose the preceding assumptions hold and $z^*$ admits an executable
+productive release. Put
+\[
+ \sigma=\min_{i:p_i>0}\frac{r_i}{p_i}>0,
+ \qquad \Lambda=1+\frac1\kappa>1.
+\]
+The minimum number $N^*(\epsilon)$ of voluntary approvals implementing
+$z^*$ with full reserve repayment satisfies
+\[
+ N^*(\epsilon)
+ \leq k\left\lceil
+ \frac{\log(1+\alpha/(\sigma\epsilon))}{\log\Lambda}
+ \right\rceil+\ell,
+ \qquad
+ N^*(\epsilon)=\Theta(\log(1/\epsilon))
+ \quad\text{as }\epsilon\downarrow0.
+\]
+In contrast, in a blocked-start economy possessing strictly positive
+weights $\lambda$ with
+\[
+ \lambda^{\mathsf T}Md\leq0
+ \quad\text{for every normalized voluntary direction }d\in\mathcal D,
+\]
+implementing any positive-surplus planner optimum with a fully repayable
+reserve requires $\Theta(1/\epsilon)$ approvals.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+From stock $s p$, the prefix inequalities permit a scaled productive
+bundle of size $s/\kappa$. Its release raises that stock to
+$\Lambda s p$. Starting with $\epsilon r\geq\sigma\epsilon p$,
+repeat this operation and truncate the last repetition when cumulative
+bundle size equals $\alpha$. Execute the completion list and return the
+reserve. The blocked-start bound in
+Theorem~A.1%<xref:thm:generalseedbounds>
+ supplies the matching logarithmic
+lower bound. Under nonexpansion, the weighted stock remains proportional
+to $\epsilon$, giving the inverse-reserve lower bound; divided execution
+gives the matching upper bound. Appendix~C%<xref:app:generalproductive>
+
+provides the complete argument and verifies membership of every
+$M_h$, $h\in(0,1/2)$.
+\end{proof}
+
+The nonexpansion and productive-execution conditions identify two distinct
+technological regimes. The former bounds the weighted stock available to
+each approval; the latter supplies an executable sequence that expands it
+and completes the planner allocation. Technologies outside these sufficient
+classes require a separate execution analysis. The coefficients of $M_h$
+determine its exact frontier, while the general loss bounds depend on the
+resource and execution conditions.
+
+\subsection{A sufficient test stated in technological primitives}
+\label{sec:primitiveproductivity}
+
+The executable-release condition can be certified without supplying a
+schedule in advance. The following finite collection of linear programs
+uses only $M$, values, costs, and action caps. It constructs a sufficient certificate for logarithmic implementation. Maintain the
+zero baseline, blocked start, positive linear preferences, complete
+bilateral access, and $r\gg0$ of Section~\ref{sec:generalproductive}.
+First solve the planner's linear program and denote its value by $V^*>0$.
+
+Let $\mathcal T=(D\times S)\cup\{(i,0):i\in D\}$ be the finite set
+of bilateral and demander-only transaction types, and let
+$L=|D||S|+|D|$. For a pair $(i,j)$, define the cone
+\[
+ \mathcal C_{ij}
+ =\{x e_i+y e_j:x,y\geq0,\ v_ix\geq c_jy\};
+ \qquad \mathcal C_{i0}=\{x e_i:x\geq0\}.
+\]
+Fix a nonempty subset $R$ of resource accounts and a permutation
+$\pi$ of $\mathcal T$. Solve
+\[
+ \begin{aligned}
+ L_{R,\pi}:={}&\max \eta\\
+ \text{subject to }&u^s\in\mathcal C_{\pi(s)}\quad(s=1,\ldots,L),
+       \qquad z=\sum_{s=1}^L u^s,\\
+ &0\leq z\leq\bar z,\qquad W(z)=V^*,\qquad\eta\geq0,\\
+ &(Mz)_k\geq\eta\quad(k\in R),
+       \qquad(Mz)_k=0\quad(k\notin R),\\
+ &\left(M\sum_{s=1}^t u^s\right)_k\geq0
+       \quad(k\notin R,\ t=1,\ldots,L).
+ \end{aligned}
+\]
+Infeasible programs fail the test. The constraints permit a type to
+receive zero activity. They require the program to choose a planner
+optimum and divide it among voluntary transaction types. Accounts
+outside $R$ must be replenished before use; temporary shortfalls in
+$R$ can subsequently be funded by the positive release in those
+same accounts. This is a finite test on primitives, although the
+enumeration of supports and orders need not be computationally cheap.
+
+\begin{proposition}[A primitive certificate for logarithmic implementation]
+\label{prop:primitiveproductivity}
+If $L_{R,\pi}>0$ for at least one support and ordering, an original
+planner optimum has a voluntary implementation with full reserve
+repayment and $\Theta(\log(1/\epsilon))$ approvals. More explicitly,
+take an optimal solution of that program, delete its zero bundles, and
+write $\nu$ for the number remaining and $p=Mz$. Define
+\[
+ \kappa=
+ \max_{k\in R,\,1\leq t\leq L}
+ \frac{[-(M\sum_{s=1}^t u^s)_k]_+}{p_k},
+ \qquad
+ \sigma=\min_{k\in R}\frac{r_k}{p_k}.
+\]
+Then $\kappa,\sigma>0$, and the optimum is implementable with at most
+\[
+ \nu\left\lceil
+ \frac{\log(1+1/(\sigma\epsilon))}{\log(1+1/\kappa)}
+ \right\rceil
+\]
+approvals. If a technology $M_C\leq M$ with the same preferences,
+caps, and trading permissions has a blocked start, positive planner
+value, and a strictly positive nonexpansion certificate, then
+Corollary~\ref{cor:optimizedreversal} applies. Thus the primitive test
+also supplies a nonempty interval of common fixed commitment
+fees at sufficiently small approval prices at which the optimized institutional ranking reverses.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+The program itself supplies a planner optimum and its voluntary
+decomposition. Its positive value makes $p$ strictly positive exactly
+on $R$. The prefix inequalities outside $R$ and the definition of
+$\kappa$ give every prefix the lower bound $-\kappa p$. A blocked
+start rules out $\kappa=0$. Hence the output satisfies
+Definition~\ref{def:executableproductive} with $d=z$, $\alpha=1$,
+and no completion list. Apply Theorem~\ref{thm:generalproductive}
+and then Corollary~\ref{cor:optimizedreversal}.
+Appendix~D%<xref:app:primitiveproductivity>
+ supplies details and verifies
+that the test passes for every $M_h$, $h\in(0,1/2)$.
+\end{proof}
+
+A successful program constructs both the planner endpoint and its
+productive path. Allowing repeated transaction types or a separate completion
+stage enlarges the class of certificates beyond this finite test.
+
+\subsection{An interacting three-stage release cycle}
+\label{sec:interactingexample}
+
+The test also covers a technology with four accounts and three
+suppliers linked through one demander:
+\[
+ \widetilde M_h=
+ \begin{pmatrix}
+ -1&1&1&1\\
+ 1&-2&-1&h\\
+ 0&1&-1&0\\
+ 0&0&1&-1
+ \end{pmatrix},\qquad h\geq0.
+\]
+Let the demander value be one, each supplier cost be $1/10$, the
+demander cap be one, and each supplier cap be $1/3$. The first
+account implies $b_1+b_2+b_3\geq a$, so the unique planner optimum
+and its value are
+\[
+ \widetilde z^*=(1,1/3,1/3,1/3),\qquad
+ \widetilde V^*=9/10,
+ \qquad
+ \widetilde M_h\widetilde z^*=(0,h/3,0,0)^{\mathsf T}.
+\]
+At this optimum every supplier cap binds. Each bilateral first move
+is blocked, including when $h>0$. Three voluntary pairs with equal
+demander and supplier increments transfer usable capacity successively
+from account 2 to account 3, from 3 to 4, and from 4 to 2; the last
+transfer returns $1+h$ units for each unit it consumes. The LP test
+passes with $R=\{2\}$ and order $(1,2,3)$ of suppliers. Its
+constants are $\kappa=1/h$ and $\sigma=3/h$ for the uniform
+reserve direction. This is an interacting resource cycle, with a
+shared demander and three suppliers, rather than a block-diagonal
+copy of the three-account example.
+
+For a concrete optimized comparison, take $h=0$ and $h=1$, reserve
+price $\rho=1$, approval cost $\tau=10^{-6}$, and fixed joint fee
+$F=1/5000$. The best joint value in either economy is $0.899799$.
+Under conservation the nonexpansion bound gives
+\[
+ \mathcal V_0^{\mathrm{seq}}
+ \leq\frac9{10}-\sqrt{\frac3{10^7}}
+ <0.899799.
+\]
+At $h=1$, reserve $10^{-6}$ and at most $57$ approvals implement the
+planner optimum with full repayment, giving
+\[
+ \mathcal V_1^{\mathrm{seq}}
+ \geq\frac{449971}{500000}=0.899942>0.899799.
+\]
+The allocations are freely chosen in both comparisons. The first
+inequality is a global upper bound and the second an attainable lower
+bound, which together establish the reversal without solving either
+sequential optimization problem exactly. All values, costs, and caps
+are unchanged across technologies. The complete primitive calculations
+are in Appendix~D%<xref:app:primitiveproductivity>
+.
+
+\subsection{Optimized welfare losses and institutional thresholds}
+\label{sec:optimizedloss}
+
+Institutional welfare depends on the allocation as well as its execution.
+We measure the loss after optimizing jointly over allocations, reserves,
+and schedules.
+For a zero-balance economy with planner value $V_M>0$, define
+\[
+ \begin{aligned}
+ \mathcal V_M^{\mathrm{seq}}(\rho,\tau)
+ &=\max\left\{0,\sup_{(z,\epsilon,T)\ \mathrm{admissible}}
+       [W(z)-\rho\epsilon-\tau T]\right\},\\
+ L_M(\rho,\tau)&=V_M-\mathcal V_M^{\mathrm{seq}}(\rho,\tau).
+ \end{aligned}
+\]
+Admissibility includes employee-voluntary bilateral approvals, all action
+caps and intermediate account constraints, and full repayment of
+$\epsilon r$. The baseline incurs no implementation cost. In particular,
+$0\leq L_M\leq V_M$; the loss includes any reduction in gross surplus
+chosen to economize on implementation.
+
+\begin{theorem}[Optimized implementation losses]
+\label{thm:optimizedloss}
+Consider the positive-linear, complete-access class of
+Section~\ref{sec:generalproductive}, with zero original balances,
+$r\gg0$, a blocked start, and $V_M>0$. Fix $\rho>0$.
+As $\tau\downarrow0$:
+\begin{enumerate}
+ \item If the technology admits a strictly positive nonexpansion
+ certificate, then
+ \[
+       L_M(\rho,\tau)=\Theta(\sqrt{\rho\tau}).
+ \]
+ \item If a planner optimum admits an executable productive release
+ in Definition~\ref{def:executableproductive}, then
+ \[
+       L_M(\rho,\tau)=\Theta\bigl(\tau\log(\rho/\tau)\bigr).
+ \]
+\end{enumerate}
+The constants depend on the fixed economy, its reserve direction, and
+the stated certificates. Both rates concern the optimized sequential
+value over all allocations, not merely the cost of a particular planner
+implementation. For all sufficiently small $\tau$, that optimized value
+is strictly positive.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+In the nonexpanding class, any implemented surplus $W>0$ requires
+$T\geq aW/\epsilon$, where
+$a=\delta_\lambda/(\bar vS_\lambda)>0$. Minimizing the resulting
+reserve and approval costs gives $2\sqrt{\rho\tau aW}$.
+The function $W-2\sqrt{\rho\tau aW}$ is convex on $[0,V_M]$;
+its maximum occurs at an endpoint. Thus allowing the institution to
+reduce its allocation cannot remove the square-root lower bound.
+Divided execution of a planner optimum attains the matching order.
+
+In the productive class, an allocation with $W<V_M/2$ already loses
+at least $V_M/2$ before implementation costs. For $W\geq V_M/2$,
+the blocked-start bound gives
+$T\geq\beta^{-1}\log(1+c/\epsilon)$ for constants
+$\beta,c>0$. Minimizing
+$\rho\epsilon+(\tau/\beta)\log(1+c/\epsilon)$ gives a lower
+bound of logarithmic order. Executing the productive certificate at
+$\epsilon=\tau/\rho$ gives the matching upper bound. These feasible
+planner implementations have costs tending to zero, establishing
+positive adoption. Appendix~E%<xref:app:optimizedloss>
+ gives the bounds
+and the full proof.
+\end{proof}
+
+Optimized implementation loss determines the authority's willingness to pay
+for a common effectiveness instruction. Joint authorization saves the
+sequential loss but still requires one ordinary approval. The remaining
+saving is the maximum additional program cost the authority will pay.
+
+\begin{proposition}[The joint-commitment threshold]
+\label{prop:feethreshold}
+Let every nonzero joint package cost $\tau+F$, where $F\geq0$,
+and keep the sequential costs above. If
+$\mathcal V_M^{\mathrm{seq}}(\rho,\tau)>0$, define
+\[
+ F_M^*(\rho,\tau)=L_M(\rho,\tau)-\tau.
+\]
+Joint settlement has higher optimized net surplus when $F<F_M^*$;
+the institutions tie when $F=F_M^*$; sequential settlement has higher
+optimized net surplus when $F>F_M^*$. Under the blocked-start assumption,
+$F_M^*\geq\tau>0$.
+
+With $F=0$, joint settlement weakly dominates sequential settlement
+for every $\rho,\tau>0$. In the blocked-start class the dominance is
+strict whenever $V_M>\tau$. If instead
+$\mathcal V_M^{\mathrm{seq}}=0$, joint settlement is strictly preferred
+exactly when $F<V_M-\tau$; otherwise both institutions select the baseline.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+The joint value is $\max\{0,V_M-\tau-F\}$, whereas the
+sequential value is $V_M-L_M$. Comparing these expressions proves
+the threshold statements, including the baseline qualification.
+Every nonzero fully repayable schedule in a blocked-start economy
+requires at least two approvals. Hence
+$\mathcal V_M^{\mathrm{seq}}\leq\max\{0,V_M-2\tau\}$ and,
+when adoption is positive, $L_M\geq2\tau$. More generally, a joint
+package with $F=0$ implements any sequential endpoint with one approval
+and no reserve cost. Appendix~E%<xref:app:optimizedloss>
+ records the argument.
+\end{proof}
+
+\begin{corollary}[The interval supporting an endogenous reversal]
+\label{cor:optimizedreversal}\label{thm:generalreversal}
+Compare a nonexpanding economy $C$ and an executable productive economy
+$P$ satisfying the respective hypotheses of
+Theorem~\ref{thm:optimizedloss}, with common preferences, action caps,
+reserve direction, bilateral permissions, and $\rho>0$. For all
+sufficiently small $\tau>0$, both sequential values are positive and
+\[
+ F_C^*=\Theta(\sqrt{\rho\tau}),\qquad
+ F_P^*=\Theta\bigl(\tau\log(\rho/\tau)\bigr),
+ \qquad \frac{F_P^*}{F_C^*}\longrightarrow0.
+\]
+Every common fixed fee $F\in(F_P^*,F_C^*)$ makes joint settlement
+strictly preferable in $C$ and sequential settlement strictly preferable
+in $P$, after both institutions choose their allocations. If
+$M_P\geq M_C$ coordinatewise, this comparison is generated by a
+productive improvement holding the other primitives fixed.
+For any fee $F>0$ held fixed as $\tau\downarrow0$, sequential settlement
+instead eventually dominates in both economies.
+\end{corollary}
+
+\begin{proof}[Proof sketch]
+Subtracting $\tau$ does not change either asymptotic order in
+Theorem~\ref{thm:optimizedloss}. Their ratio tends to zero, so the
+fee interval is nonempty. Apply Proposition~\ref{prop:feethreshold}
+to each economy. Both thresholds tend to zero, giving the last claim.
+\end{proof}
+
+The threshold makes the institutional choice operational. At a given
+approval price, the authority purchases joint authorization when its
+incremental resource cost is below the execution loss it avoids. Productive
+releases lower that willingness to pay. The common-fee interval therefore
+identifies programs for which an improvement in release capacity changes
+the chosen authorization technology. As ordinary approvals become arbitrarily
+cheap, both thresholds converge to zero and any fixed positive joint charge
+eventually favors sequential execution.
+
+\subsection{Standing balances and the decision to borrow capacity}
+\label{sec:standingcapacity}
+
+Standing authorization capacity changes the cost of execution. To identify
+this margin, give the authority original balances $s r$, where $s\geq0$
+and $r\gg0$ is the reserve direction. Original capacity may be consumed;
+only the additional reserve $\epsilon r$ must be returned. Zero rented
+reserve is admissible whenever the original ledger supports a schedule. Write $V(s)$
+for the planner value and $L(s;\rho,\tau)$ for the optimized sequential
+loss relative to that value. The technology has a blocked start at
+$s=0$. For $s>0$, the authority can use its standing balances immediately.
+
+The next result uses a condition on planner allocations over an interval
+$0\leq s\leq\bar s$. A fixed voluntary core $d=\sum_{j=1}^k u^j$
+has nonnegative release $p=Md$. For each $s$, a planner optimum can be
+written
+\[
+ z_s^*=\alpha_s d+\sum_{j=1}^{\ell_s}v_s^j,
+ \qquad 0<\underline\alpha\leq\alpha_s\leq\overline\alpha<\infty,
+ \qquad \ell_s\leq\ell,
+\]
+where the completion bundles are voluntary and satisfy
+\[
+ sr+\alpha_s p+M\sum_{j=1}^t v_s^j\geq0
+ \qquad(0\leq t\leq\ell_s).
+\]
+We call this a uniform core and completion certificate. It describes
+technologies in which standing capacity changes the amount assigned to
+a common executable core and finances a bounded number of terminal
+adjustments. It is a finite condition on activity bundles and account
+balances. When the bundles and $\alpha_s$ are affine in $s$, feasibility
+can be checked at the two endpoints of the interval; a common planner
+dual solution verifies optimality throughout it. Appendix~F%<xref:app:standingcapacity>
+
+states this finite verification precisely.
+
+\begin{theorem}[Implementation losses with standing balances]
+\label{thm:standingcapacity}
+Retain the positive-linear, complete-access assumptions of
+Section~\ref{sec:generalproductive}, a blocked start at zero balances,
+$V(0)>0$, and a uniform core and completion certificate. Fix $\rho>0$.
+Uniformly over $s\in[0,\bar s]$, as $\tau\downarrow0$:
+\begin{enumerate}
+ \item If the technology has a strictly positive nonexpansion
+ certificate, then
+ \[
+ L_C(s;\rho,\tau)\asymp
+ \Phi_C(s;\rho,\tau)
+ :=\inf_{\epsilon\geq0}
+ \left\{\rho\epsilon+\frac{\tau}{s+\epsilon}\right\}
+ \asymp\frac{\tau}{s+\sqrt{\tau/\rho}}.
+ \]
+ \item If the core has $p\ne0$ and satisfies
+ $M\sum_{j=1}^t u^j\geq-\kappa p$ for every prefix and some
+ $\kappa>0$, then
+ \[
+ \begin{aligned}
+ L_P(s;\rho,\tau)&\asymp\Phi_P(s;\rho,\tau)\\
+ &:=\inf_{\epsilon\geq0}
+ \left\{\rho\epsilon+
+       \tau\log\left(1+\frac1{s+\epsilon}\right)\right\}\\
+ &\asymp\tau\log\left(1+\frac1{s+\tau/\rho}\right).
+ \end{aligned}
+ \]
+\end{enumerate}
+Here $\asymp$ denotes two-sided bounds with positive constants independent
+of $s$ and sufficiently small $\tau$. The constants may depend on the
+fixed economy, the certificates, $\bar s$, and $\rho$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The initial usable stock is $(s+\epsilon)r$. The nonexpansion and
+blocked-start arguments bound approvals from below using this total
+stock. The bounds apply to every allocation with surplus at least
+$V(0)/2$; choosing a lower-surplus allocation incurs a fixed welfare
+loss. For the upper bounds, execute the core using total stock
+$s+\epsilon$, by divided execution under conservation and geometric
+expansion under productivity. The completion inequalities preserve
+the entire rented reserve. These constructions attain the planner
+optimum, so their losses contain no allocation approximation error.
+Minimization over $\epsilon$ gives the displayed envelopes.
+Appendix~F%<xref:app:standingcapacity>
+ supplies the uniform bounds.
+\end{proof}
+
+Put $\eta=\tau/\rho$. The conserving envelope is exactly
+\[
+ \Phi_C=
+ \begin{cases}
+ 2\sqrt{\rho\tau}-\rho s,&s\leq\sqrt\eta,\\
+ \tau/s,&s\geq\sqrt\eta.
+ \end{cases}
+\]
+The productive envelope is minimized at total capacity
+$\max\{s,t_P\}$, where $t_P=(\sqrt{1+4\eta}-1)/2\sim\eta$.
+These are minimizers of the bounding envelopes. The following
+implementation decisions follow from the matching bounds themselves.
+
+\begin{table}[!htbp]
+\centering
+\caption{Standing capacity and optimized implementation loss}
+\label{tab:standingcapacity}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.23\linewidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+Standing capacity & Conserving technology & Productive technology\\
+\midrule
+$s\lesssim\eta$
+& Loss $\asymp\sqrt{\rho\tau}$; borrowing of order $\sqrt\eta$ attains this rate.
+& Loss $\asymp\tau\log(1/\eta)$; borrowing of order $\eta$ attains this rate.\\[3pt]
+$\eta\ll s\ll\sqrt\eta$
+& Loss $\asymp\sqrt{\rho\tau}$; any implementation attaining this order must borrow capacity of order $\sqrt\eta$.
+& Loss $\asymp\tau\log(1/s)$; existing balances suffice to attain this order.\\[3pt]
+$\sqrt\eta\lesssim s\to0$
+& Loss $\asymp\tau/s$; existing balances suffice.
+& Loss $\asymp\tau\log(1/s)$; existing balances suffice.\\[3pt]
+Fixed $s>0$
+& Loss $\asymp\tau$, with a coefficient of order $1/s$ as $s$ becomes small.
+& Loss $\asymp\tau$, with a coefficient of order $\log(1/s)$ as $s$ becomes small.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The middle regime identifies a financing decision: productive releases
+allow the authority to implement its planner allocation using standing
+capacity, whereas conservation requires additional authorization to
+attain the optimal welfare-loss order. At fixed positive balances,
+both technologies' sequential losses become linear in the approval price.
+Their coefficients retain the economically relevant distinction.
+
+\begin{corollary}[Institutional choice with positive standing balances]
+\label{cor:standingreversal}
+Consider a conserving economy and a productive economy satisfying the
+respective conditions of Theorem~\ref{thm:standingcapacity}, with common
+preferences, action caps, trading permissions, $s,\rho,\tau$, and reserve direction. For every path
+$s=s(\tau)\to0$, including strictly positive paths,
+\[
+ L_P(s;\rho,\tau)/L_C(s;\rho,\tau)\longrightarrow0.
+\]
+Moreover, for every sufficiently small fixed $s>0$, there is a nonempty
+interval of constants $f_s>0$ such that the common joint commitment
+fee $F=f_s\tau$ makes joint settlement optimal in the conserving
+economy and sequential settlement optimal in the productive economy,
+for all sufficiently small $\tau$. Each institution chooses its
+allocation. The same conclusion applies to a technological improvement
+when preferences, caps, and trading permissions are common and
+the two technologies additionally satisfy $M_C\leq M_P$.
+\end{corollary}
+
+\begin{proof}[Proof sketch]
+The envelopes imply the ratio limit. For fixed $s$, uniform constants
+give $L_C\geq c_C\tau/s$ and
+$L_P\leq C_P\tau\log(1+1/s)$ for small $\tau$.
+As $s\downarrow0$, the first coefficient exceeds the second.
+Choose
+\[
+ \max\{0,C_P\log(1+1/s)-1\}<f_s<c_C/s-1
+\]
+and apply the threshold $F^*=L-\tau$. Planner values remain bounded
+away from zero, ensuring adoption. The full proof is in
+Appendix~F%<xref:app:standingcapacity>
+.
+\end{proof}
+
+
+\section{Exact costs, endogenous allocations, and robustness}
+\label{sec:optimalreserve}
+\subsection{The exact cost of a proportional target}
+\label{sec:productivecost}
+
+For $0\leq h\leq1/4$, put
+\[
+ Q_h(\theta;\rho,\tau)
+ =\inf_{\epsilon>0}\{\rho\epsilon+\tau N_h(\theta,\epsilon)\}.
+\]
+This is a cost conditional on implementing $z_\theta$. The endogenous welfare
+comparison below allows each institution to choose any feasible allocation.
+
+\begin{theorem}[The exact cost frontier]
+\label{thm:productivecost}
+For $0\leq h\leq1/4$, $\theta\in(0,1]$, and $\rho,\tau>0$,
+\begin{equation}
+ Q_h(\theta;\rho,\tau)=\min_{T\in\{2,3,\ldots\}}
+    \{\rho\epsilon_T(h,\theta)+\tau T\}.
+ \label{eq:productivecostexact}
+\end{equation}
+An optimal reserve and integer approval count exist. The reserve infimum can
+equivalently be taken over $0<\epsilon\leq\theta/4$.
+For each fixed $h>0$ and $\theta>0$, as $\tau/\rho\downarrow0$,
+$Q_h=\Theta(\tau\log(\rho/\tau))$, whereas
+$Q_0=\Theta(\sqrt{\rho\theta\tau})$.
+\end{theorem}
+\begin{proof}[Proof sketch]
+At each approval count the exact frontier gives the least reserve; minimizing
+over integers proves the formula. Its objective tends to infinity with $T$,
+so a minimum exists. Two equal pair increments implement the target from
+reserve $\theta/4$, making larger reserves unnecessary. At $h=0$, minimize
+$\rho\theta/[12(T-1)]+\tau T$. At fixed $h>0$, the exact reserve decreases
+geometrically in $T$; a count proportional to $\log(\rho/\tau)$ attains
+the upper order, and the geometric lower bound gives the matching order.
+Appendix~B%<xref:app:localrobustness>
+ supplies the full argument.
+\end{proof}
+
+\subsection{Reversal when each institution chooses its allocation}
+\label{sec:endogenousreversal}
+
+Let $\mathcal V_h^J$ and $\mathcal V_h^{\mathrm{seq}}$ denote the best joint
+and sequential employee surplus net of implementation costs, including the
+zero-cost baseline. The joint value is
+\[
+ \mathcal V_h^J=\max\{0,V_h^*-F-\tau\}.
+\]
+The sequential value is the supremum of
+$W(z)-\rho\epsilon-\tau T$ over all voluntary admissible schedules, all
+$\epsilon>0$, and all terminal allocations whose reserve can be fully returned,
+also including zero. Sequential settlement can select every feasible endpoint and its
+admissible compensated schedule.
+
+\begin{theorem}[Endogenous-allocation institutional reversal]
+\label{thm:endogenousreversal}
+In the family $M_h$, fix $\rho=12$, $\tau=1/10000$, $\mathcal K=0$, and charge
+$F=1/100$ for every nonzero joint package. Then
+\[
+ \mathcal V_0^J=\frac{8899}{10000}
+ >\frac{8799}{10000}=\mathcal V_0^{\mathrm{seq}},
+\]
+whereas
+\[
+ \mathcal V_{1/4}^{\mathrm{seq}}
+ \geq\frac{27280647}{30064375}
+ >\frac{98889}{110000}=\mathcal V_{1/4}^J.
+\]
+Thus, under the same fixed implementation costs, productive releases reverse
+the welfare ranking of joint and sequential settlement even when each
+institution may choose its allocation. The productive lower bound is attained
+by a voluntary 16-approval schedule implementing $z_{1/4}^*$ with reserve
+$1/144309$ in every account and full repayment.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+At $h=0$, repayment and conservation imply that every feasible terminal
+allocation is $z_\theta$, $0\leq\theta\leq1$. For $T\geq2$, the exact
+frontier makes net surplus at most
+\[
+ \frac9{10}\theta-\frac{\theta}{T-1}-\frac{T}{10000}.
+\]
+For each $T$, this is linear in $\theta$, so a positive optimum uses
+$\theta=1$. Writing $n=T-1$, the minimum of
+$1/n+(n+1)/10000$ is $201/10000$, attained at $n=100$.
+The best joint value is $9/10-101/10000$.
+
+At $h=1/4$, Proposition~\ref{prop:productiveplanner} gives the global planner
+value $10/11$. Proposition~\ref{prop:exactproductive} implements
+$z_{8/11}$ with $16$ approvals and reserve $e=1/144309$. The target releases
+$1/11$ of pension capacity. A final supplier-2 approval with demander increment
+$3/11$ and supplier increment $2/11$ consumes that release, adds $1/11$ of
+position capacity, and reaches $(1,4/11,6/11)$. It has positive surplus and
+leaves the reserve repayable. Its implementation cost is
+\[
+ \overline C=\frac{12}{144309}+\frac{16}{10000}
+            =\frac{50603}{30064375}<\frac{101}{10000}.
+\]
+The last first-stage approval and the completion use the same pair.
+Combining them preserves linear feasibility and balanced voluntary compensation,
+so only 16 approvals are charged. Hence its net value exceeds the best joint value, whose allocation is also
+chosen optimally. Appendix~G%<xref:app:endogenousproof>
+ verifies every approval,
+transfer, cap, and account balance. The productive sequential number is an
+attainable lower bound, which suffices for the optimized ranking.
+\end{proof}
+
+\begin{table}[!htbp]
+\centering
+\caption{Endogenous allocations and the reversal of institutional welfare}
+\label{tab:endogenousreversal}\label{tab:productivereversal}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrl@{}}
+\toprule
+Technology & Best joint & Best sequential & Higher value\\
+\midrule
+Conserving ($h=0$) & $0.889900$ & $0.879900$ & Joint\\
+Productive ($h=1/4$) & $0.898991$ & $\geq\underline V_P$ & Sequential\\
+\bottomrule
+\end{tabularx}
+
+\smallskip
+\begin{minipage}{\linewidth}
+The productive lower bound is
+$\underline V_P=27280647/30064375\simeq0.907408$.
+Decimals are rounded; the inequality refers to the exact fraction.
+Both joint entries and the conserving sequential entry are global optimized
+values. The productive sequential entry uses a feasible 16-approval schedule.
+Preferences, caps, prices, and the fixed fee on every nonzero joint package
+are unchanged.
+\end{minipage}
+\end{table}
+
+The exact productive frontier and cost theorem concern proportional targets.
+They provide the first stage of this proof, while the endogenous planner
+calculation supplies the correct endpoint. Theorem~\ref{thm:endogenousreversal}
+therefore strengthens the fixed-target comparison in the online appendix
+by implementing the endogenous planner optimum. The appendix displays the 17-stage construction and
+the merged final approval explicitly. The feasible witness establishes the productive lower bound required for
+the ranking; both joint values and the conserving sequential value are exact.
+
+Corollary~A.3%<xref:cor:productivereversal>
+ in the online appendix gives the
+corresponding fixed-target comparison and its exact cost-minimizing reserves.
+
+\subsection{When standing capacity changes the institution}\label{sec:standingdecisions}
+The three-account family supplies an explicit certificate. For
+$0\leq h<1/2$ and $0\leq s\leq1/32$, original balances $s\mathbf1$
+give
+\[
+ z_{h,s}^*=\left(1,\frac{1-8s}{2+3h},
+ \frac{1+2h+(4+2h)s}{2+3h}\right),\qquad
+ V_{h,s}^*=1-\frac{1+h}{5(2+3h)}
+                 +\frac{2-h}{5(2+3h)}s.
+\]
+Implement the proportional target with
+$\theta_s=2(1-8s)/(2+3h)$ using total initial capacity
+$s+\epsilon$. One supplier-2 approval then adds
+\[
+ (\Delta a,\Delta b_2)=
+ \left(\frac{3h+16s}{2+3h},
+       \frac{2h+(12+2h)s}{2+3h}\right).
+\]
+It reaches $z_{h,s}^*$, consumes the permitted original balances,
+and returns $\epsilon$ in each account. Compensation equals
+$\Delta b_2/10$, leaving the supplier indifferent and the demander
+strictly better off whenever the completion is nonzero.
+
+\begin{proposition}[An exact frontier with standing capacity]
+\label{prop:standingexact}
+In $M_0$ with original balances $s\mathbf1$, $0\leq s\leq1/32$,
+the minimum additional reserve implementing the planner optimum in
+at most an integer $T\geq2$ voluntary approvals is
+\[
+ \epsilon_T^*(s)=
+ \left[\frac{1-8s}{12(T-1)}-s\right]_+.
+\]
+In particular, for $s>0$ the minimum number of approvals implementing
+that optimum without rented capacity is
+\[
+ N_0(s)=\left\lceil1+\frac{1-8s}{12s}\right\rceil.
+\]
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Let $t=s+\epsilon$ and let $q$ be the difference between payroll
+and position balances. Conservation bounds $|q|\leq3t$ at every
+prefix. Initially $q=0$; at the planner endpoint $q=-3s$.
+Each supplier's activity equals twice its contribution to the
+variation of $q$. Hence total supplier activity satisfies
+$1-2s\leq12t(T-1)+6s$, giving the lower bound.
+Alternating boundary transactions attain this variation, with a
+final supplier-2 transaction that leaves the full reserve available
+for repayment. When standing balances exceed the required amplitude,
+smaller alternating excursions attain the same endpoint without
+renting capacity. Every transaction has positive employee surplus.
+Appendix~F.5%<xref:app:standingexact>
+ gives the construction and proves
+optimality over all schedules.
+\end{proof}
+
+The formula separates two uses of original capacity. A larger stock
+directly replaces rented capacity, and it changes the planner's
+supplier mix, reducing the quantity that must pass through repeated
+conversions. Because approvals are discrete, institutional choice
+can include an interval of indifference rather than a single cutoff.
+
+\begin{corollary}[Standing capacity determines when productivity changes the institution]
+\label{cor:standingcutoffs}
+Fix $\rho=12$, $\tau=1/10000$, $F=1/100$, and original balances
+$s\mathbf1$, with $0\leq s\leq1/32$. Define
+\[
+ s_J=\frac1{1208},\qquad
+ s_S=\frac{9901}{11960000}.
+\]
+After optimizing allocations, reserves, and schedules, the
+conserving economy $M_0$ strictly prefers joint settlement for
+$s<s_J$, is indifferent for $s\in[s_J,s_S]$, and strictly prefers
+sequential settlement for $s>s_S$. The productive economy
+$M_{1/4}$ strictly prefers sequential settlement throughout the
+interval $[0,1/32]$.
+\end{corollary}
+
+\begin{proof}[Proof sketch]
+For $n=T-1\geq2$, the conserving sequential optimum conditional
+on $n$ uses the planner allocation and has implementation cost
+\[
+ C_n(s)=\left[\frac{1-8s}{n}-12s\right]_+
+          +\frac{n+1}{10000}.
+\]
+Schedules with one or two approvals, including their optimal
+quantity choices, cannot improve on joint settlement below the
+stated cutoff. The $n=100$ schedule first matches the joint cost
+$101/10000$ at $s_J$; the $n=99$ schedule first matches it
+at $s_S$ and falls below it for larger stocks. Every other approval count crosses later or has an
+approval cost already exceeding the joint cost. In $M_{1/4}$,
+the proportional construction and one completion reach the new
+planner optimum using at most 17 approvals and rented reserve
+at most $1/144309$. Their cost is strictly below $101/10000$
+for every stated $s$. Appendix~F.5%<xref:app:standingexact>
+ verifies
+the global optimization and the cutoff inequalities.
+\end{proof}
+
+This comparison holds prices and commitment costs fixed while
+varying standing authorization capacity. Productivity changes the
+chosen institution when $s<s_J$. Once $s>s_S$, existing capacity
+already makes sequential settlement preferable under conservation,
+so productivity improves its performance without changing the
+institution. The interval between these cutoffs reflects the
+integer number of approvals.
+
+For the same prices as Theorem~\ref{thm:endogenousreversal}, take
+$s=1/2500$. In the productive economy, nine proportional approvals
+and the completion implement the planner optimum using only original
+balances. Table~\ref{tab:positivereversal} reports exact joint values,
+the exact conserving optimum, and this attainable productive value.
+The fixed fee is $F=0.01$ in both economies. Joint productive value is
+rounded to six decimals; its exact value is $494473/550000$. The
+productive sequential lower bound is rounded downward from
+$249739/275000$. The two conserving entries are exact.
+
+\begin{table}[!htbp]
+\centering
+\caption{Optimized institutional comparison with positive original balances}
+\label{tab:positivereversal}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrl@{}}
+\toprule
+Technology & Best joint value & Best sequential value & Preferred rule\\
+\midrule
+$h=0$ & $0.889980$ & $0.884812$ & Joint\\
+$h=1/4$ & $0.899042$ & $\geq0.908141$ & Sequential\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+All accounts initially contain positive capacity. Productivity changes
+the authority's institution and removes the need to rent capacity in
+the displayed planner implementation. Appendix~F%<xref:app:standingcapacity>
+
+verifies the fractions, compensation, intermediate balances, and global
+optimization; Appendix~F.5%<xref:app:standingexact>
+ proves the exact
+conserving value.
+
+
+\paragraph{The conserving optimum.}
+Proposition~A.4%<xref:prop:exactdesign>
+ gives the full conserving solution.
+With common verification cost $\mathcal K(z_\theta)=k\theta$, the optimal
+positive quantity is one. The authority compares the joint fee with
+$G(\rho,\tau)=\min_{n\geq1}\{\rho/(12n)+\tau n\}$.
+The minimizing integer satisfies
+$\tau n(n-1)\leq\rho/12\leq\tau n(n+1)$; the sequential schedule
+uses $n+1$ approvals and reserve $1/(12n)$. This exact choice connects
+the resource frontier to the inventory balance in \citet{Baumol1952}.
+
+\paragraph{Allocation and participation margins.}
+The comparison also permits the joint fee to vary with the allocation.
+Proposition~A.5%<xref:prop:allocationfees>
+ proves that every common fee profile
+in $[0.005,0.015]$ preserves the reversal; a coverage charge can change the
+joint quantity to $0.99z_h^*$. Proposition~A.6%<xref:prop:allocationdistortion>
+
+shows that concave benefits can reduce the sequentially chosen quantity to
+$7/8$, and that employee participation can raise the two-approval reserve
+above its physical minimum. The appendix gives the complete institutional
+optimizations and compensated schedules.
+
+\paragraph{Fixed adjustment units and original slack.}
+The reversal also holds with a fixed adjustment unit and positive
+original account balances. The following extension imposes the same activity grid
+on both institutions; the core model remains divisible. Let
+$\mathcal V^J_{h,\delta}(R^0)$ and
+$\mathcal V^{\mathrm{seq}}_{h,\delta}(R^0)$ be their optimized net values
+when every activity increment is a multiple of $\delta$, original
+balances are $R^0$, and every rented reserve is returned. Transfers and
+reserve capacity remain divisible, and the authority selects the
+allocation and schedule.
+
+\begin{corollary}[Reversal with fixed units and original account slack]
+\label{cor:gridrobustreversal}
+Maintain the prices and financing assumptions of
+Theorem~\ref{thm:endogenousreversal}. Fix $\delta=1/500$ and let
+$R^0\in[0,1/2500]^3$. Then
+\[
+ \mathcal V^J_{0,\delta}(R^0)=\frac{8899}{10000}
+ >\frac{44399}{50000}
+ \geq\mathcal V^{\mathrm{seq}}_{0,\delta}(R^0),
+\]
+whereas
+\[
+ \mathcal V^{\mathrm{seq}}_{1/4,\delta}(R^0)
+ \geq\frac{9013}{10000}
+ >\frac{8989}{10000}
+ =\mathcal V^J_{1/4,\delta}(R^0).
+\]
+The productive lower bound uses a 17-approval schedule with reserve
+$1/2000$ per account, implements a grid-constrained planner optimum,
+and returns that reserve in full. The result includes every strictly
+positive original ledger in the displayed box.
+\end{corollary}
+
+\noindent\emph{Proof sketch.}
+An exact grid schedule implements $(1,183/500,272/500)$, with gross
+surplus $909/1000$. Its reserve and approval costs total $77/10000$.
+Feasibility is preserved when original balances increase. In the
+conserving economy, a variation bound on the difference between payroll
+and position balances gives the global upper bound
+$\mathcal V^{\mathrm{seq}}_0(s\mathbf 1)
+\leq8799/10000+(101/5)s$, even with divisible activities.
+Planner dual bounds and the activity grid give the two exact joint
+values. Monotonicity in the original ledger extends the bounds to
+the entire box. Appendix~J%<xref:app:gridrobustreversal>
+ supplies the
+schedule and proof. The specified grid and slack box therefore preserve the strict
+institutional ranking at the common implementation prices.
+
+\section{An empirical application: priority in water allocation trade}
+\label{sec:waterapplication}
+
+Administrative records from the Victorian Water Register show how processing
+order changes the allocation of a positive stock of authorized trade
+opportunity. The application measures successful requests and executed water
+volume under alternative priority rules. These outcomes make the authority's
+allocation decision observable in an institution with binding capacity.
+Requests are treated as indivisible at their submitted volumes, connecting
+the exercise to Appendix~L%<xref:app:indivisibility>
+.
+
+\subsection{Institution and administrative replay}
+For the October 2025 Goulburn to Murray opening, the authority randomized
+applications submitted during a common window. The Australian Competition
+and Consumer Commission independently observed the randomization
+\citep{ACCC2025October}. The published application table contains 203 eligible
+requests, submitted on 15 October and processed on 16 October. Each row
+records the requested volume, processing order, outcome, and trade opportunity
+before and after processing. Receipt identifiers also recover arrival order
+\citep[Table~5 and notes]{DEECA2025October}.
+
+The stock available immediately before this queue was
+$R=31{,}215.1$ megalitres (ML). It equals the opening opportunity of
+$31{,}523.4$ ML, less $326.3$ ML of earlier tagged use, plus $18.0$ ML of
+reverse trade \citep{DEECA2025October}. The reverse trade replenished usable
+corridor capacity before the queue began. It therefore enters the starting
+stock held fixed across rules. No tagged use occurred during the queue.
+The common pool contains the 203 eligible applications; it excludes two
+ineligible submissions and a later trade that used the final $5.3$ ML.
+
+Let $v_i>0$ be the submitted volume and $q$ a permutation of the pool
+$\mathcal I$. The capacity benchmark accepts a request in full whenever it
+fits, and continues after a refusal:
+\[
+ Y_i(q)=\mathbf 1\!\left\{
+ v_i\le R-\sum_{j\prec_q i}v_jY_j(q)\right\},\qquad
+ A(q)=\sum_iY_i(q),\qquad Q(q)=\sum_i v_iY_i(q).
+\]
+Here $A$ counts successful applications and $Q$ measures executed volume.
+Exact arithmetic reproduces every observed October decision and every
+intermediate balance. Appendix~M%<xref:app:waterbenchmark>
+ documents the
+391 records covering October and December, the exclusions, and the replay.
+
+\subsection{Priority, application counts, and capacity use}
+Write $v_{(1)}\le\cdots\le v_{(203)}$ for the ordered request sizes.
+The maximum application count under the capacity benchmark is
+\[
+ A^*(R)=\max\left\{k:\sum_{j=1}^{k}v_{(j)}\le R\right\}.
+\]
+Processing the smallest requests first attains this bound: every subset of
+$k$ requests consumes at least the sum of the $k$ smallest volumes.
+The maximum need not select a unique order. In these data,
+\[
+ \sum_{j=1}^{159}v_{(j)}=31{,}193.0
+ \ \le\ 31{,}215.1
+ \ <\ 31{,}693.0=\sum_{j=1}^{160}v_{(j)}.
+\]
+Thus $159$ is the exact maximum, and executing $160$ requests would require
+at least another $477.9$ ML of trade opportunity under this benchmark.
+
+\begin{table}[htbp]
+\centering\small
+\caption{October water trade: the same applications and starting capacity}
+\label{tab:waterqueues}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Processing rule & Successful applications & Volume (ML) & Unused (ML)\\
+\midrule
+Recorded random priority & 98 & 31,209.8 & 5.3\\
+Arrival order & 106 & 31,206.4 & 8.7\\
+Smallest volume first & 159 & 31,193.0 & 22.1\\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize
+The first row reproduces the administrative record. The other rows are
+capacity counterfactuals for the same 203 submitted requests, assuming all
+other requirements remain satisfied. All rules process 203 applications.
+Smallest first breaks equal volumes by recorded priority. Source:
+\citet[Table~5]{DEECA2025October}; calculations in
+Appendix~M%<xref:app:waterbenchmark>
+.
+\end{minipage}
+\end{table}
+
+The change from recorded priority to smallest first yields 61 more successful
+applications, a $62.2\%$ increase relative to 98. The gap is $38.4\%$ of
+the attainable count. With the stated tie rule, 79 observed successes remain
+selected, 19 are displaced, and 80 previously refused requests enter.
+Executed volume falls by only $16.8$ ML. Near exhaustion of the volume limit
+therefore coexists with a substantial difference in how many applications
+receive capacity. A simulation of 100,000 uniform permutations gives a mean
+of $93.66$ successes and a central $95\%$ range of 75 to 112. The recorded
+98 successes are typical of this conditional lottery benchmark.
+
+\subsection{Economic interpretation and account requirements}
+The application identifies an allocation margin: priority determines which
+requests use existing capacity. A count objective places equal weight on
+applications. A welfare objective instead requires their gains from trade;
+191 of the 203 requests are classified as related party trades, and 174
+record a zero price. These entries do not identify those gains. Applications
+also need not represent distinct traders. A permanent change in priority
+could change submission sizes and application splitting, whereas the reported
+comparison holds the submitted menu fixed.
+
+The comparison clarifies the role of settlement in the theory. In the scalar
+capacity benchmark, any feasible selected subset can be executed sequentially
+in any order. Joint selection and an optimal sequential rule consequently
+attain the same count. The measured gap concerns the particular priority
+rule. The main theorems additionally characterize the cost of execution when
+separate accounts and productive releases constrain the authority's chosen
+allocation. Moreover, the 203 administrative decisions are distinct from
+the successful application counts in Table~\ref{tab:waterqueues}; those
+counts cannot be substituted for the costly approval count in the theory.
+
+December provides a direct observation of an additional account requirement.
+At priority 45, an application for $62.3$ ML was refused with $23{,}824.0$ ML
+of trade opportunity remaining. The report attributes the refusal to an
+insufficient seller balance \citep[Table~5, note~8]{DEECA2025December}.
+The seller account is a private entitlement alongside the public trade
+limit. Its unobserved links and balance history determine whether a different
+schedule could fund that seller. The October count maximum is therefore
+conditional on the other account requirements. Together, the records
+establish a substantial allocation margin and distinct execution constraints.
+
+The $18.0$ ML reverse trade illustrates how completed transactions replenish
+capacity for later use. This addition enters the initial stock $R$ held
+fixed in our comparisons. The productive-release theorem requires a
+voluntary sequence that finances its intermediate steps, supports repeated
+expansion, and permits completion at the chosen planner allocation. The
+records establish an operational channel for replenishment; the theorem
+identifies when that channel changes optimized implementation costs and
+institutional choice.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Productive releases change the cost of implementing a planner-optimal
+allocation under separate public accounts. Conserving transactions repeatedly
+use existing authorization capacity, whereas an executable productive sequence
+creates capacity for subsequent approvals. The exact frontier and the general
+loss bounds quantify this distinction after the authority chooses both its
+allocation and its schedule.
+
+Standing balances determine how the mechanism enters institutional decisions.
+With empty accounts, conservation and productivity generate different
+small-cost rates. With fixed positive balances, both losses are linear in the
+approval price, but the required approval counts depend inversely and
+logarithmically, respectively, on scarce standing capacity. The uniform
+comparison identifies a range in which productive implementation attains the
+minimum-loss order using existing balances, while conserving implementation
+gains from temporary reserves. Productive releases therefore reduce the
+standing capacity needed to economize on paid authorization and joint
+commitment. The commitment thresholds translate this quantitative advantage
+into a reversal of the preferred settlement rule, with allocations endogenous
+under both institutions. The exact conserving frontier identifies a
+standing-capacity cutoff above which both technologies select sequential
+settlement at the same fixed implementation prices.
+
+The water trade application makes the allocation margin concrete. With
+positive initial trading opportunity and fixed submitted requests, different
+priority rules produce nearly identical volume use and sharply different
+application counts. Tracking the selected allocation and the underlying
+account constraints is therefore essential to evaluating an execution rule.
+The theory supplies the further comparison when productive releases and
+separate public accounts determine the cost of implementing that allocation.
+
+The framework preserves the distinction between employee compensation and
+public authorization. Transfers secure participation; resource releases
+finance execution. The main results retain complete information and the
+$B\equiv0$ mandate. The appendix extends the analysis to valued public
+balances and discrete decisions, identifying the financing conditions and
+reserve floors relevant to those environments. These results provide a basis
+for comparing account reforms through their effects on standing capacity,
+temporary authorization, and approval requirements.
+
+
+\begin{thebibliography}{99}
+\bibitem[Arrow and Debreu(1954)]{ArrowDebreu1954}
+\textsc{Arrow, Kenneth J., and Gerard Debreu} (1954): ``Existence of an equilibrium for a competitive economy,'' \emph{Econometrica}, 22(3), 265--290. DOI: \url{10.2307/1907353}.
+
+\bibitem[Atalay et~al.(2010)]{AtalayMartinMcAndrews2010}
+\textsc{Atalay, Enghin, Antoine Martin, and James McAndrews} (2010):
+``The welfare effects of a liquidity-saving mechanism,'' Staff Report 331,
+Federal Reserve Bank of New York, June 2008, revised January 2010.
+\url{https://www.newyorkfed.org/research/staff_reports/sr331.html}.
+
+
+\bibitem[ACCC(2025)]{ACCC2025October}
+\textsc{Australian Competition and Consumer Commission} (2025):
+``Goulburn to Murray trade opening, 15 October 2025: ACCC independent observer
+of the execution of randomisation tool,'' statement, 24 October.
+\url{https://waterregister.vic.gov.au/images/documents/ACCC_statement_randomisation_october_2025.pdf}.
+
+\bibitem[Baumol(1952)]{Baumol1952}
+\textsc{Baumol, William J.} (1952): ``The transactions demand for cash: An inventory theoretic approach,'' \emph{The Quarterly Journal of Economics}, 66(4), 545--556. DOI: \url{10.2307/1882104}.
+
+\bibitem[Boyd and Vandenberghe(2004)]{BoydVandenberghe2004}
+\textsc{Boyd, Stephen, and Lieven Vandenberghe} (2004): \emph{Convex Optimization}. Cambridge University Press. DOI: \url{10.1017/CBO9780511804441}.
+
+\bibitem[CPSS and IOSCO(2012)]{CPSSIOSCO2012}
+\textsc{Committee on Payment and Settlement Systems and Technical Committee of the International Organization of Securities Commissions} (2012):
+\emph{Principles for Financial Market Infrastructures}. Basel: Bank for International Settlements, April.
+\url{https://www.bis.org/publications/principles-financial-market-infrastructures.pdf}.
+
+\bibitem[DEECA(2025a)]{DEECA2025October}
+\textsc{Department of Energy, Environment and Climate Action} (2025a):
+\emph{Goulburn-to-Murray Post Trade Opening Report: October 2025}.
+Victorian Water Register, 23 October.
+\url{https://waterregister.vic.gov.au/images/documents/Goulburn-to-Murray-Post-Trade-Opening-Report-October-2025.pdf}.
+
+\bibitem[DEECA(2025b)]{DEECA2025December}
+\textsc{Department of Energy, Environment and Climate Action} (2025b):
+\emph{Goulburn-to-Murray Post Trade Opening Report: December 2025}.
+Victorian Water Register, 19 December.
+\url{https://waterregister.vic.gov.au/images/documents/Goulburn-to-Murray-Post-Trade-Opening-Report-December-2025.pdf}.
+
+\bibitem[Feldman(1973)]{Feldman1973}
+\textsc{Feldman, Allan M.} (1973): ``Bilateral trading processes, pairwise optimality, and Pareto optimality,'' \emph{Review of Economic Studies}, 40(4), 463--473. DOI: \url{10.2307/2296581}.
+
+\bibitem[Fisher(1989)]{Fisher1989}
+\textsc{Fisher, Franklin M.} (1989): ``It takes t$^{*}$ to tango: Trading coalitions with fixed prices,'' \emph{Review of Economic Studies}, 56(3), 391--403. DOI: \url{10.2307/2297554}.
+
+\bibitem[Fraca and Haddad(2015)]{FracaHaddad2015}
+\textsc{Fraca, Estíbaliz, and Serge Haddad} (2015): ``Complexity analysis of continuous Petri nets,'' \emph{Fundamenta Informaticae}, 137(1), 1--28. DOI: \url{10.3233/FI-2015-1168}.
+
+\bibitem[Goldman and Starr(1982)]{GoldmanStarr1982}
+\textsc{Goldman, Steven M., and Ross M. Starr} (1982): ``Pairwise, t-wise, and Pareto optimalities,'' \emph{Econometrica}, 50(3), 593--606. DOI: \url{10.2307/1912603}.
+
+\bibitem[J{\'u}lvez et~al.(2003)]{JulvezRecaldeSilva2003}
+\textsc{Júlvez, Jorge, Laura Recalde, and Manuel Silva} (2003): ``On reachability in autonomous continuous Petri net systems,'' in \emph{Applications and Theory of Petri Nets 2003}, ed. by Wil M. P. van der Aalst and Eike Best. \emph{Lecture Notes in Computer Science}, 2679. Springer, 221--240. DOI: \url{10.1007/3-540-44919-1_16}.
+
+\bibitem[Kahn and Roberds(2001)]{KahnRoberds2001}
+\textsc{Kahn, Charles M., and William Roberds} (2001): ``Real-time gross settlement and the costs of immediacy,'' \emph{Journal of Monetary Economics}, 47(2), 299--319. DOI: \url{10.1016/S0304-3932(01)00047-2}.
+
+\bibitem[Kahn et~al.(2003)]{KahnMcAndrewsRoberds2003}
+\textsc{Kahn, Charles M., James McAndrews, and William Roberds} (2003): ``Settlement risk under gross and net settlement,'' \emph{Journal of Money, Credit and Banking}, 35(4), 591--608.
+\url{https://www.newyorkfed.org/research/staff_reports/sr86.html}.
+
+\bibitem[Koeppl et~al.(2008)]{KoepplMonnetTemzelides2008}
+\textsc{Koeppl, Thorsten V., Cyril Monnet, and Ted Temzelides} (2008): ``A dynamic model of settlement,'' \emph{Journal of Economic Theory}, 142(1), 233--246. DOI: \url{10.1016/j.jet.2006.10.005}.
+
+\bibitem[Madden(1978)]{Madden1978}
+\textsc{Madden, Paul} (1978): ``Why the Edgeworth process assumption isn’t that bad,'' \emph{Review of Economic Studies}, 45(2), 279--283. DOI: \url{10.2307/2297343}.
+
+\bibitem[Martin and McAndrews(2008)]{MartinMcAndrews2008}
+\textsc{Martin, Antoine, and James McAndrews} (2008): ``Liquidity-saving mechanisms,'' \emph{Journal of Monetary Economics}, 55(3), 554--567. DOI: \url{10.1016/j.jmoneco.2007.12.011}.
+
+\end{thebibliography}
+\end{document}

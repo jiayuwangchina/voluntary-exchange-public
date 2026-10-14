@@ -1,0 +1,41 @@
+VICTORIAN WATER REGISTER SOURCE AUDIT
+Retrieved 13 October 2026. All four PDFs downloaded from the official state website.
+
+October report
+Corporate author: Department of Energy, Environment and Climate Action (DEECA).
+Title: Goulburn-to-Murray Post Trade Opening Report: October 2025.
+Report released: 23 October 2025 (ACCC statement and official announcement corroborate).
+Applications lodged 15 October 2025, 7 am to 2 pm; manually processed 16 October.
+Table 5, printed pp.11-16: 203 eligible applications, plus 2 ineligible applications; later 5.3 ML application separately reported.
+The published eligible applications sum to 70,222.0 ML. They are the complete eligible submission-window batch, not every water transfer during that day or water year.
+The opening 31,523.4 ML becomes 31,215.1 ML before eligible processing: subtract 326.3 ML tagged use and add 18.0 ML back trade. No tagged use occurred during October processing (printed p.16, note 5).
+Unique IDs GTMxxxx were assigned by receipt order (note 2). Sorting IDs therefore implements arrival order among the fixed eligible pool.
+The late 5.3 ML application is excluded from all three fixed-pool simulations. The ineligible applications GTM0118 and GTM0164 are also excluded.
+Source typographical issue: p.16 note 10 says end of processing on 15 October; main narrative p.3 and note 7 explicitly say manual processing 16 October. Use application date 15 October and processing date 16 October.
+
+Independent arithmetic audit of October PDF extraction
+Parsed all 203 eligible rows, distinct priorities 1-203. All observed statuses match volume <= opportunity-before; all account transitions match approved-volume subtraction. Published priority: 98 approvals / 31,209.8 ML / 5.3 ML residual. Receipt order: 106 / 31,206.4 / 8.7. Increasing volume: 159 / 31,193.0 / 22.1. Smallest 160 sum to 31,693.0 ML, proving maximum count 159 under fixed single-capacity eligibility.
+The difference is 61 applications, 62.2449 percent of observed 98, and 38.3648 percent of maximum 159. These are application counts, not unique traders or aggregate surplus. All 203 applications were processed; successful applications cannot be interpreted as number of administrative decisions.
+
+December report
+Corporate author: DEECA. Title: Goulburn-to-Murray Post Trade Opening Report: December 2025. Released 19 December 2025 (ACCC letter). Lodged 15 December; processed 16 December.
+Table 5, printed pp.9-13, gives 188 eligible applications;117 approved, 37,639.9 ML. Initial release 38,085.0 ML;437.6 ML tagged before queue leaves37,647.4 ML; a further 6.2 ML tagged use occurs between priorities 70 and 71. Final residual 1.3 ML.
+Priority 45 requests 62.3 ML and is refused with 23,824.0 ML opportunity. Footnote 8, printed p.14, attributes this to insufficient seller account balance at processing. Seller ABA is privately held; one cannot call it a separate public account or infer another ordering would cure it.
+December is a useful out-of-sample ledger check only with explicit tagged-use shock and seller eligibility. It is not capacity-only identical to October.
+
+Institutional interpretation
+Applications are processed one at a time from start to finish; rejected requests do not stop the queue. Published October and December rows show later small approvals after a larger rejection. No partial approval appears in either table: observed success debits the submitted quantity, otherwise zero.
+The current official Trade Opening Processes webpage explicitly charges processing fees for refused as well as approved applications; allows multiple applications; describes random Excel numbers followed by ascending sort; checks seller balances at processing. Those balances may change between submission and processing because of use or other transfers. Current linked formal procedure was updated September 2026; do not cite its changed timing as the 2025 rule.
+The observed random queue was an interim institutional response to unreliable first-arrival system loads, with access/equity objectives. Minimum-volume priority optimizes fixed-pool application counts and could induce application splitting if announced prospectively. Random priority cannot be labelled policy failure solely because its count is below the maximum.
+With nonnegative consumption of one fixed resource, any feasible subset can be processed sequentially in any order. Thus joint and optimally chosen sequential schedules attain the same count maximum 159. The measured gap is a priority-rule gap, not the paper's optimized sequential-versus-joint settlement gap, nor evidence of productive capacity cycles or welfare loss.
+
+Primary citations
+DEECA (2025a), Goulburn-to-Murray Post Trade Opening Report: October 2025. Victorian Water Register, 23 October.
+DEECA (2025b), Goulburn-to-Murray Post Trade Opening Report: December 2025. Victorian Water Register, 19 December.
+ACCC (2025a), Goulburn to Murray trade opening,15October 2025: ACCC Independent Observer of the execution of randomisation tool. 24 October.
+ACCC (2025b), Goulburn to Murray trade opening,15December 2025: ACCC Independent Observer of the execution of randomisation tool. 19 December.
+
+URLs in source_manifest.json; additional official process URL:
+https://waterregister.vic.gov.au/water-trading/allocation-trading/trade-opening-processes
+October report release announcement:
+https://www.waterregister.vic.gov.au/about/news/514-post-trade-report-for-october-2025-goulburn-to-murray-trade-opening-now-available

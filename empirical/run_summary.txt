@@ -1,0 +1,96 @@
+{
+  "october_schedules": {
+    "recorded_random_priority": {
+      "approved_count": 98,
+      "approved_volume_ML": "31209.8",
+      "residual_capacity_ML": "5.3",
+      "mean_approved_volume_ML": 318.4673469387755,
+      "capacity_utilization": 0.9998302103789513,
+      "related_party_approved_count": 91,
+      "zero_declared_price_approved_count": 79,
+      "tie_break": "Not needed; ordering variable is unique."
+    },
+    "arrival_order": {
+      "approved_count": 106,
+      "approved_volume_ML": "31206.4",
+      "residual_capacity_ML": "8.7",
+      "mean_approved_volume_ML": 294.4,
+      "capacity_utilization": 0.9997212887352596,
+      "related_party_approved_count": 106,
+      "zero_declared_price_approved_count": 90,
+      "tie_break": "Not needed; ordering variable is unique."
+    },
+    "smallest_volume_first": {
+      "approved_count": 159,
+      "approved_volume_ML": "31193.0",
+      "residual_capacity_ML": "22.1",
+      "mean_approved_volume_ML": 196.1823899371069,
+      "capacity_utilization": 0.9992920093160041,
+      "related_party_approved_count": 151,
+      "zero_declared_price_approved_count": 130,
+      "tie_break": "Recorded random priority, when requested volumes are equal."
+    }
+  },
+  "cardinality_certificate": {
+    "maximum_feasible_count": 159,
+    "sum_smallest_k_ML": "31193.0",
+    "sum_smallest_k_plus_one_ML": "31693.0",
+    "capacity_ML": "31215.1",
+    "cutoff_volume_ML": "500.0",
+    "number_at_cutoff_volume": 23,
+    "unique_optimal_order": false,
+    "argument": "Every subset of k+1 applications uses at least the sum of the k+1 smallest volumes. That sum exceeds capacity, while the k-smallest subset fits. Ordering that subset first attains k sequentially. Equal 500 ML applications make the optimizer nonunique."
+  },
+  "comparison_to_recorded_order": {
+    "arrival_order": {
+      "common_approved_count": 53,
+      "newly_approved_count": 53,
+      "formerly_approved_not_selected_count": 45,
+      "net_count_difference": 8
+    },
+    "smallest_volume_first": {
+      "common_approved_count": 79,
+      "newly_approved_count": 80,
+      "formerly_approved_not_selected_count": 19,
+      "net_count_difference": 61
+    }
+  },
+  "participation_gap": {
+    "count": 61,
+    "fraction_of_cardinality_maximum": "61/159",
+    "percent_of_cardinality_maximum": 38.36477987421384,
+    "fraction_increase_over_observed": "61/98",
+    "percent_increase_over_observed": 62.244897959183675,
+    "volume_change_ML": "-16.8"
+  },
+  "uniform_permutation_benchmark": {
+    "draws": 100000,
+    "seed": 20251015,
+    "generator": "NumPy PCG64",
+    "numpy_version": "2.3.5",
+    "mean_approved_count": 93.66423,
+    "standard_deviation_approved_count": 9.398055742631952,
+    "monte_carlo_standard_error_of_mean_count": 0.029719261723942167,
+    "count_quantiles": {
+      "0": 56,
+      "0.025": 75,
+      "0.25": 87,
+      "0.5": 94,
+      "0.75": 100,
+      "0.975": 112,
+      "1": 129
+    },
+    "mean_approved_volume_ML": 31207.171671,
+    "volume_quantiles_ML": {
+      "0": "31127.3",
+      "0.025": "31191.1",
+      "0.25": "31203.8",
+      "0.5": "31209.2",
+      "0.75": "31212.4",
+      "0.975": "31214.9",
+      "1": "31215.1"
+    },
+    "mean_cardinality_gap_to_159": 65.33577,
+    "description": "Simulation distribution conditional on the fixed October application set and capacity, under uniformly random permutations. It is not a sampling distribution for a causal estimator."
+  }
+}
